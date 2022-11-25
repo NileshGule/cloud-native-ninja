@@ -4,12 +4,27 @@ This repository is the playground for the Cloud Native Ninja YouTube series. The
 
 - Developer machine setup
 
-        - Install required tools and setup a developer machine
-        - Windows Terminal, WSL, Docker DEsktop, VS Code, Azure CLI, kubectl, Helm, and more
+    - Install required tools and setup a developer machine
+    - Windows Terminal, WSL, Docker DEsktop, VS Code, Azure CLI, kubectl, Helm, and more
 
-- Application development - Polyglot application development with front end, middle tier, and back end developed uisng different languages and frameworks
-- Containerization - run containerized applications like databases, message brokers, and more - run containerized applications using Docker Compose
+- Application development - Polyglot application development with front end, middle tier, and back end developed using different languages and frameworks
+- Containerization 
+    - run containerized applications like databases, message brokers, and more 
+    - run containerized applications using Docker Compose
 - Kubernetes
+    - Kubernetes manifests
+    - Kubernetes environment variables
+    - Kubernetes secrets
+    - Kubernetes config maps
+    - Kubernetes autoscaling
 - CI/CD
+    - GitHub Actions
+- Cloud services integrations
+    - Azure SQL Database
+    - RabbitMQ on Azure
+    - Azure Container Registry
+    - Azure Key Vault
+    - Dapr
+    - KEDA
 - Observability
 - GitOps
