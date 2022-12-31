@@ -5,7 +5,7 @@ This repository is the playground for the Cloud Native Ninja YouTube series. The
 - Developer machine setup
 
     - Install required tools and setup a developer machine
-    - Windows Terminal, WSL, Docker DEsktop, VS Code, Azure CLI, kubectl, Helm, and more
+    - Windows Terminal, WSL, Docker Desktop, VS Code,IntelliJ, Azure CLI, kubectl, Helm, and more
 
 - Application development - Polyglot application development with front end, middle tier, and back end developed using different languages and frameworks
 - Containerization 
@@ -17,6 +17,9 @@ This repository is the playground for the Cloud Native Ninja YouTube series. The
     - Kubernetes secrets
     - Kubernetes config maps
     - Kubernetes autoscaling
+    - Kubernetes ingress
+    - Kubernetes service mesh
+    - CLI and visual tools for visualizing Kubernetes resources
 - CI/CD
     - GitHub Actions
 - Cloud services integrations
@@ -26,5 +29,11 @@ This repository is the playground for the Cloud Native Ninja YouTube series. The
     - Azure Key Vault
     - Dapr
     - KEDA
+    - Serverless
+- Infrastructure as Code
+    - Powershell
+    - Terraform
 - Observability
 - GitOps
+- Chaos Engineering
+- Multicloud deployments (Azure, AWS, OpenShift etc)
