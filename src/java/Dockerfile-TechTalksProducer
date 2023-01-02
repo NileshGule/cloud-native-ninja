@@ -1,0 +1,14 @@
+FROM openjdk:19-jdk-slim as build
+
+WORKDIR /app
+
+COPY techtalks-producer /techtalks-Producer/
+
+WORKDIR /techtalks-Producer
+
+RUN mvn clean package
+
+FROM openjdk:19-jdk-slim
+COPY --from=build /techtalks-Producer/target/*.jar TechTalksProducer.jar
+EXPOSE 80
+ENTRYPOINT ["java", "-jar", "TechTalksProducer.jar"]

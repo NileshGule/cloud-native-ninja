@@ -20,7 +20,7 @@ namespace TechTalksAPI.Controllers
         }
 
 
-        // POST api/TechTalks/Generate?numberOfMessages=100
+        // GET api/TechTalks/Generate?numberOfMessages=100
         [HttpGet("Generate")]
 
         public IActionResult GenerateTechTalks(int numberOfMessages)
