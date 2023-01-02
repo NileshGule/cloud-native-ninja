@@ -1,0 +1,20 @@
+FROM mcr.microsoft.com/dotnet/sdk:7.0-alpine AS build-env
+
+WORKDIR /app
+
+COPY TechTalksConsumer /TechTalksConsumer/
+COPY TechTalksModel /TechTalksModel/
+
+WORKDIR /TechTalksConsumer
+RUN dotnet restore
+
+RUN dotnet publish --configuration Release --output releaseOutput --no-restore
+
+#build runtime image
+FROM mcr.microsoft.com/dotnet/aspnet:7.0-alpine
+
+WORKDIR /TechTalksConsumer
+
+COPY --from=build-env /TechTalksConsumer/releaseOutput ./
+
+ENTRYPOINT ["dotnet", "TechTalksConsumer.dll"]

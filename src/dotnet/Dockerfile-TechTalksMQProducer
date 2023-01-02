@@ -1,0 +1,20 @@
+FROM mcr.microsoft.com/dotnet/sdk:7.0-alpine AS build-env
+
+WORKDIR /app
+
+COPY TechTalksMQProducer /TechTalksMQProducer/
+COPY TechTalksModel /TechTalksModel/
+
+WORKDIR /TechTalksMQProducer
+RUN dotnet restore
+
+RUN dotnet publish --configuration Release --output releaseOutput --no-restore
+
+#build runtime image
+FROM mcr.microsoft.com/dotnet/aspnet:7.0-alpine
+
+WORKDIR /TechTalksMQProducer
+
+COPY --from=build-env /TechTalksMQProducer/releaseOutput ./
+
+ENTRYPOINT ["dotnet", "TechTalksMQProducer.dll"]
