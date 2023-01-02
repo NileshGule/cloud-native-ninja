@@ -1,23 +1,6 @@
-# # FROM openjdk:19-jdk as build
+FROM eclipse-temurin:19.0.1_10-jdk-alpine AS build
 
-# FROM maven:3.8-jdk-11
-
-# WORKDIR /app
-
-# COPY . /techtalks-Producer/
-
-# WORKDIR /techtalks-Producer
-
-# # RUN mvn --version
-
-# RUN mvn clean package
-
-# FROM openjdk:19-jdk-slim
-# COPY --from=build /techtalks-Producer/target/*.jar TechTalksProducer.jar
-# EXPOSE 80
-# ENTRYPOINT ["java", "-jar", "TechTalksProducer.jar"]
-
-FROM openjdk:19-alpine AS build
+# FROM openjdk:19-alpine AS build
 
 # Set the working directory
 WORKDIR /app
@@ -39,7 +22,9 @@ COPY src /app/src
 RUN ./mvnw package -DskipTests
 
 # Create the runtime image
-FROM openjdk:19-alpine
+# FROM openjdk:19-alpine
+
+FROM eclipse-temurin:19-jre-alpine
 
 # Set the working directory
 WORKDIR /app
