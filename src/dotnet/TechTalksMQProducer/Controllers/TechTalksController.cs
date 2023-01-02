@@ -19,16 +19,6 @@ namespace TechTalksAPI.Controllers
             _messageQueue = messageQueue;
         }
 
-        // GET: api/TechTalks
-        [HttpGet]
-        public IEnumerable<TechTalk> GetAll()
-        {
-            List<TechTalk> techTalks = new List<TechTalk>();
-
-            throw new UnauthorizedAccessException("Throwing sample message for Sentry");
-
-            return techTalks;
-        }
 
         // POST api/TechTalks/Generate?numberOfMessages=100
         [HttpGet("Generate")]
