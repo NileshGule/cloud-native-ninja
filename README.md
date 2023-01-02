@@ -7,7 +7,14 @@ This repository is the playground for the Cloud Native Ninja YouTube series. The
 - Developer machine setup
 
     - Install required tools and setup a developer machine
-    - Windows Terminal, WSL, Docker Desktop, VS Code,IntelliJ, Azure CLI, kubectl, Helm, and more
+        - [Windows Terminal](https://learn.microsoft.com/en-us/windows/terminal/install) 
+        - [Windows Subsystem for Linux WSL 2](https://learn.microsoft.com/en-us/windows/wsl/install)
+        - [Docker Desktop](https://www.docker.com/products/docker-desktop/) 
+        - [VS Code](https://code.visualstudio.com/)
+        - [IntelliJ IDEA](https://www.jetbrains.com/idea/) 
+        - [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli) 
+        - [kubectl](https://kubernetes.io/docs/tasks/tools/) 
+        - [Helm](https://helm.sh/), and many more
 
 - Application development - Polyglot application development with front end, middle tier, and back end developed using different languages and frameworks
 - Containerization 
