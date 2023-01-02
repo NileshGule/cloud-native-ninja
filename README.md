@@ -1,5 +1,7 @@
 # cloud-native-ninja
 
+![Cloud Native Ninja](/images/fotor-cloud-native-ninja.png)
+
 This repository is the playground for the Cloud Native Ninja YouTube series. The assumption is that the person going through this series is an absolute beginner to cloud native technologies. The goal is to provide a hands-on experience with the technologies and concepts that are covered in the series. The series is broken up into multiple parts:
 
 - Developer machine setup
@@ -11,17 +13,18 @@ This repository is the playground for the Cloud Native Ninja YouTube series. The
 - Containerization 
     - run containerized applications like databases, message brokers, and more 
     - run containerized applications using Docker Compose
+    - devcontainers - (Needs help)
 - Kubernetes
     - Kubernetes manifests
     - Kubernetes environment variables
     - Kubernetes secrets
     - Kubernetes config maps
     - Kubernetes autoscaling
-    - Kubernetes ingress
-    - Kubernetes service mesh
+    - Kubernetes ingress - (Needs help)
+    - Kubernetes service mesh - (Needs help)
     - CLI and visual tools for visualizing Kubernetes resources
 - CI/CD
-    - GitHub Actions
+    - GitHub Actions - (Needs help)
 - Cloud services integrations
     - Azure SQL Database
     - RabbitMQ on Azure
@@ -32,11 +35,15 @@ This repository is the playground for the Cloud Native Ninja YouTube series. The
     - Serverless
 - Infrastructure as Code
     - Powershell
-    - Terraform
+    - Terraform - (Needs help)
 - Observability
-- GitOps
-- Chaos Engineering
-- Multicloud deployments (Azure, AWS, OpenShift etc)
+    - Centralized Logging
+    - Telemetry
+    - Exception handling
+    - OpenTelemetry - (Needs help)
+- GitOps - (Needs help)
+- Chaos Engineering - (Needs help)
+- Multicloud deployments (Azure, AWS, OpenShift etc) - (Needs help)
 
 Note: The objective of this series is to provide a hands-on experience with the technologies and concepts that are covered in the series. The goal is not to provide a deep dive into the technologies and concepts. 
 
