@@ -16,7 +16,15 @@ This repository is the playground for the Cloud Native Ninja YouTube series. The
         - [kubectl](https://kubernetes.io/docs/tasks/tools/) 
         - [Helm](https://helm.sh/), and many more
 
+    
+
 - Application development - Polyglot application development with front end, middle tier, and back end developed using different languages and frameworks
+    - Programming languages and SDKs
+        - [.Net Core](https://dotnet.microsoft.com/en-us/download)
+        - [Java](https://jdk.java.net/19/)
+        - [Go](https://go.dev/doc/install)
+        - [Rust](https://www.rust-lang.org/tools/install)
+        - [ReactJS](https://www.geeksforgeeks.org/how-to-install-reactjs-on-windows/)
 - Containerization 
     - run containerized applications like databases, message brokers, and more 
     - run containerized applications using Docker Compose
