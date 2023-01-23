@@ -65,3 +65,18 @@ Note: The objective of this series is to provide a hands-on experience with the 
 It is difficult for one person to cover all the topics in the series. Therefore, I am looking for contributors to help with the series. If you are interested in contributing to the series, please reach out to me on Twitter @nileshgule.
 
 This repository is a work in progress. I will be adding more content to the repository as I progress through the series. You can contribute to this work by submitting a pull request. I will be more than happy to host you on my [YouTube channel](https://www.youtube.com/channel/UCJOvQz55Ly-Rkr_ldE8pMEQ) as a guest to talk about the contribution you made to the series.
+
+## YouTube videos
+
+
+- Cloud Native Ninja Kickstart - Kickstart video for the Cloud Native Ninja series
+
+[![Cloud Native Ninja Kickstart](/images/cloud-native-ninja-ickstart.png)](https://youtu.be/oPTchjM_6Lk)
+
+- Cloud Native Ninja Part 1 - Getting started with containers
+
+[![Cloud Native Ninja Part 1 - Getting started with containers](/images/cloud-native-ninja-pt1-getting-started-with-containers.png)](https://youtu.be/WT73jn-1nUg)
+
+
+
+
