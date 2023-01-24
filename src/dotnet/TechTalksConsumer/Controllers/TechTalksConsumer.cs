@@ -8,7 +8,7 @@ using Dapr;
 
 namespace TechTalksAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [ApiController]
     public class TechTalksConsumerController : Controller
     {
         // POST: api/TechTalksConsumer

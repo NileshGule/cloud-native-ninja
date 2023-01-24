@@ -6,8 +6,8 @@ spec:
   type: pubsub.rabbitmq
   version: v1
   metadata:
-  - name: connectionString
-    value: 'amqp://guest:guest@localhost:5672/'
+  - name: host
+    value: "amqp://guest:guest@localhost:5672/"
   - name: durable
     value: true
   - name: deletedWhenUnused
@@ -21,5 +21,5 @@ spec:
   - name: concurrencyMode
     # value: parallel
     value: single
-  - name: exchangeKind
-    value: fanout
+  # - name: exchangeKind
+  #   value: fanout

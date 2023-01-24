@@ -10,6 +10,7 @@ using Bogus;
 namespace TechTalksAPI.Controllers
 {
     [Route("api/[controller]")]
+    [ApiController]
     public class TechTalksController : Controller
     {
         private readonly ITechTalksEventPublisher _messageQueue;
