@@ -2,10 +2,10 @@ FROM mcr.microsoft.com/dotnet/sdk:7.0-alpine AS build-env
 
 WORKDIR /app
 
-COPY TechTalksConsumer /TechTalksConsumer/
+COPY consumer /consumer/
 COPY TechTalksModel /TechTalksModel/
 
-WORKDIR /TechTalksConsumer
+WORKDIR /consumer
 RUN dotnet restore
 
 RUN dotnet publish --configuration Release --output releaseOutput --no-restore
@@ -13,8 +13,8 @@ RUN dotnet publish --configuration Release --output releaseOutput --no-restore
 #build runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:7.0-alpine
 
-WORKDIR /TechTalksConsumer
+WORKDIR /consumer
 
-COPY --from=build-env /TechTalksConsumer/releaseOutput ./
+COPY --from=build-env /consumer/releaseOutput ./
 
-ENTRYPOINT ["dotnet", "TechTalksConsumer.dll"]
+ENTRYPOINT ["dotnet", "consumer.dll"]

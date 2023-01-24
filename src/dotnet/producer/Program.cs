@@ -21,10 +21,17 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+
+
+app.MapGet("/test", (string name) =>
+{
+    Console.WriteLine($"Hello {name}!");
+}).WithOpenApi();
 
 app.MapGet("/generate", (int numberOfTalks) =>
 {
+    Console.WriteLine($"Generating {numberOfTalks} TechTalks");
+
     var fakeDataCreator = new Faker();
 
     var categoryNames = new List<string>()
@@ -77,6 +84,8 @@ app.MapGet("/generate", (int numberOfTalks) =>
     string pubsubName = "rabbitmq-pubsub";
     string topicName = "techtalks";
 
+    Console.WriteLine($"Publishing {numberOfTalks} TechTalks to message queue");
+
     using (var client = new DaprClientBuilder().Build())
     {
         dummyTechTalks.ForEach(talk =>
@@ -94,5 +103,9 @@ app.MapGet("/generate", (int numberOfTalks) =>
 .WithName("GenerateTechTalks")
 .WithOpenApi();
 
-app.Run("http://localhost:5001");
+// app.Run("http://localhost:5001");
+
+// app.UseHttpsRedirection();
+
+app.Run();
 

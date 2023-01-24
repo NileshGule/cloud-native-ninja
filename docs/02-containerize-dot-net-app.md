@@ -21,6 +21,12 @@ dapr run `
 --app-id consumer `
 --components-path ../../../Components/ `
 --app-port 6000 `
+-- dotnet run
+
+dapr run `
+--app-id consumer `
+--components-path ../../../Components/ `
+--app-port 6000 `
 --dapr-http-port 3500 `
 -- dotnet run
 
@@ -31,5 +37,12 @@ dapr run `
 --dapr-http-port 3500 `
 --dapr-grpc-port 60002 `
 dotnet run
+
+docker run --rm `
+-it `
+--name techtalksproducer `
+-p 5000:80 `
+-e ASPNETCORE_ENVIRONMENT Development `
+ngacrregistry.azurecr.io/techtalksproducer:dotnet
 
 ```
