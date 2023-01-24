@@ -105,7 +105,7 @@ app.MapGet("/generate", (int numberOfTalks) =>
 
 // app.Run("http://localhost:5001");
 
-// app.UseHttpsRedirection();
+app.UseHttpsRedirection();
 
 app.Run();
 
