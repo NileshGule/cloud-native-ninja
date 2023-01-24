@@ -10,11 +10,17 @@ dapr run `
 --app-port 5001 `
 -- dotnet run
 
+dapr run `
+--app-id producer `
+--components-path ../../../Components/ `
+--app-port 5000 `
+-- dotnet run
+
 
 dapr run `
 --app-id consumer `
 --components-path ../../../Components/ `
---app-port 5000 `
+--app-port 6000 `
 --dapr-http-port 3500 `
 -- dotnet run
 
