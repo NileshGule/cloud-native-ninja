@@ -1,18 +1,18 @@
 version: '3.4'
 
 services:
-  # rabbitmq:
-  #   image: rabbitmq:3-management-alpine
-  #   ports:
-  #     - "15672:15672"
-  #     - "5671:5671"
-  #     - "5672:5672"
-  #   environment:
-  #     RABBITMQ_DEFAULT_PASS: guest
-  #     RABBITMQ_DEFAULT_USER: guest
-
-  web_api:
-    image: ngacrregistry.azurecr.io/techtalksproducer:dotnet
-    container_name: producer
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
     ports:
-      - "5000:80"
+      - "15672:15672"
+      - "5671:5671"
+      - "5672:5672"
+    environment:
+      RABBITMQ_DEFAULT_PASS: guest
+      RABBITMQ_DEFAULT_USER: guest
+
+  # producer:
+  #   image: ngacrregistry.azurecr.io/techtalksproducer:dotnet
+  #   container_name: producer
+  #   ports:
+  #     - "5000:80"

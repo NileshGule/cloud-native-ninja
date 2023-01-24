@@ -99,6 +99,8 @@ app.MapGet("/generate", (int numberOfTalks) =>
         });
     }
 
+    Console.WriteLine($"Published {numberOfTalks} TechTalks to message queue");
+
 })
 .WithName("GenerateTechTalks")
 .WithOpenApi();
