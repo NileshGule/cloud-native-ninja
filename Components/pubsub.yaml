@@ -19,5 +19,7 @@ spec:
   - name: reconnectWait
     value: 0
   - name: concurrencyMode
-    value: single
+    value: single  
+  - name: exchangeKind
+    value: fanout
   
