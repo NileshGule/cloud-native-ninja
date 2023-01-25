@@ -1,4 +1,3 @@
-using Bogus;
 using TechTalksModel;
 using Dapr.Client;
 
@@ -21,8 +20,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-
-
+// dummy method for testing the minimal API
 app.MapGet("/test", (string name) =>
 {
     Console.WriteLine($"Hello {name}!");
@@ -32,54 +30,7 @@ app.MapGet("/generate", (int numberOfTalks) =>
 {
     Console.WriteLine($"Generating {numberOfTalks} TechTalks");
 
-    var fakeDataCreator = new Faker();
-
-    var categoryNames = new List<string>()
-            {
-                "Meetup",
-                "Free Conference",
-                "Paid Conference",
-                "Hackathon",
-                "EventTribe"
-            };
-
-    var categoryDescriptions = new List<string>()
-            {
-                "Community event organized via meetup",
-                "Free Tech Conference",
-                "Paid Tech Conference",
-                "Hackathon",
-                "Community event organized via Eventribe"
-            };
-
-    var levelNames = new List<string>()
-            {
-                "100 - Beginner",
-                "200 - Intermediate",
-                "300 - Advanced",
-                "400 - Expert"
-            };
-
-    var techTalks = new Faker<TechTalk>()
-    .StrictMode(true)
-    .RuleFor(t => t.Id, f => f.Random.Number(1, 1000))
-    .RuleFor(t => t.TechTalkName, f => f.Lorem.Word())
-    .RuleFor(t => t.CategoryId, f => f.Random.Number(1, 5))
-    .RuleFor(t => t.Category, new Category
-    {
-        Id = fakeDataCreator.Random.Number(1, 5),
-        CategoryName = fakeDataCreator.PickRandom(categoryNames),
-        Description = fakeDataCreator.PickRandom(categoryDescriptions)
-    })
-    .RuleFor(t => t.LevelId, f => f.Random.Number(1, 4))
-    .RuleFor(t => t.Level, new Level
-    {
-        Id = fakeDataCreator.Random.Number(1, 4),
-        LevelName = fakeDataCreator.PickRandom(levelNames)
-    });
-
-    // generate required number of dummy TechTalks
-    var dummyTechTalks = techTalks.Generate(numberOfTalks);
+    var dummyTechTalks = new TechTalksGenerator().Generate(numberOfTalks);
 
     string pubsubName = "rabbitmq-pubsub";
     string topicName = "techtalks";
@@ -104,8 +55,6 @@ app.MapGet("/generate", (int numberOfTalks) =>
 })
 .WithName("GenerateTechTalks")
 .WithOpenApi();
-
-// app.Run("http://localhost:5001");
 
 app.UseHttpsRedirection();
 
