@@ -77,6 +77,12 @@ This repository is a work in progress. I will be adding more content to the repo
 
 [![Cloud Native Ninja Part 1 - Getting started with containers](/images/cloud-native-ninja-pt1-getting-started-with-containers.png)](https://youtu.be/WT73jn-1nUg)
 
+- Cloud Native Ninja Part 2 - Distributed Microservices with Dapr
+
+[![Cloud Native Ninja Part 2 - Distributed Microservices with Dapr](/images/cloud-native-ninja-pt2-distributed-microservices-with-dapr.png)](https://youtu.be/ep_IJ9d0Nqw)
+
+
+
 
 
 
