@@ -3,6 +3,10 @@ package com.nileshgule.techtalksproducer.controllers;
 import io.dapr.client.DaprClient;
 import io.dapr.client.DaprClientBuilder;
 import io.dapr.client.domain.Metadata;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -38,27 +42,24 @@ public class TechTalksProducerController {
         try (DaprClient client = new DaprClientBuilder().build()){
             IntStream.range(0, numberOfMessages)
                     .forEach(i -> {
-                        String id = UUID.randomUUID().toString();
-                        String techTalkName = "TechTalk " + i;
-                        int categoryId = i % 3;
-                        int levelId = i % 2;
-                        Map<String, Object> message = Map.of(
-                                "id", id,
-                                "techTalkName", techTalkName,
-                                "categoryId", categoryId,
-                                "levelId", levelId
-                        );
+                        Order order = new Order(i);
 
-                log.info("Publishing message: " + message );
-                client.publishEvent(pubsubName, topicName, message, singletonMap(Metadata.TTL_IN_SECONDS, MESSAGE_TTL_IN_SECONDS)).block();
+                log.info("Publishing message: " + order );
+                client.publishEvent(pubsubName, topicName, order, singletonMap(Metadata.TTL_IN_SECONDS, MESSAGE_TTL_IN_SECONDS)).block();
             });
-            client.close();
         } catch (Exception e) {
-//            log.severe("Error while publishing messages: " + e.getMessage());
             log.error("Error while publishing messages: " + e.getMessage());
             return ResponseEntity.badRequest().body("Error while publishing messages: " + e.getMessage());
         }
 
         return ResponseEntity.ok().body("Successfully produced " + numberOfMessages + " messages to RabbitMQ");
     }
+}
+
+
+
+@AllArgsConstructor
+@Getter
+class Order {
+    private int orderId;
 }
