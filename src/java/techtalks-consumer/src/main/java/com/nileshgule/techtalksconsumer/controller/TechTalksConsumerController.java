@@ -28,11 +28,11 @@ public class TechTalksConsumerController {
     @Topic(pubsubName="rabbitmq-pubsub", name="techtalks")
 //@Topic(pubsubName="${PUBSUB_NAME}", name="${RABBITMQ_TOPIC}")
     @PostMapping(path = "/process", consumes = MediaType.ALL_VALUE)
-    public Mono<ResponseEntity> consumeMessage(@RequestBody(required = false) CloudEvent<Order> cloudEvent) {
+    public Mono<ResponseEntity> consumeMessage(@RequestBody(required = false) CloudEvent<TechTalk> cloudEvent) {
 
         return Mono.fromSupplier(() -> {
             try {
-                log.info("Subscriber received: " + cloudEvent.getData().getOrderId());
+                log.info("Subscriber received: " + cloudEvent.getData().getId());
                 return ResponseEntity.ok("SUCCESS");
             } catch (Exception e) {
                 throw new RuntimeException(e);
@@ -46,6 +46,9 @@ public class TechTalksConsumerController {
 
 @Getter
 @Setter
-class Order {
-    private int orderId;
+class TechTalk {
+    private int Id;
+    private String techTalkName;
+    private int categoryId;
+    private int levelId;
 }

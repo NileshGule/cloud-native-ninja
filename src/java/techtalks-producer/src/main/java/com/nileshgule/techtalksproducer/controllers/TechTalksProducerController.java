@@ -1,5 +1,6 @@
 package com.nileshgule.techtalksproducer.controllers;
 
+import com.github.javafaker.Faker;
 import io.dapr.client.DaprClient;
 import io.dapr.client.DaprClientBuilder;
 import io.dapr.client.domain.Metadata;
@@ -41,12 +42,20 @@ public class TechTalksProducerController {
 //    @RequestMapping(value = "/generate", method = RequestMethod.GET)
     public ResponseEntity<String> produceMessages(@RequestParam(value = "numberOfMessages", defaultValue = "1") int numberOfMessages) {
         log.info("Publishing messages to topic: " + topicName);
+
+        Faker faker = new Faker();
+
         try (DaprClient client = new DaprClientBuilder().build()){
             IntStream.range(0, numberOfMessages)
                     .forEach(i -> {
-                        Order order = new Order(i);
-                        log.info("Publishing message: " + order + "on queue :" + pubSubName + " with topic: " + topicName);
-                        client.publishEvent("rabbitmq-pubsub", "techtalks", order, singletonMap(Metadata.TTL_IN_SECONDS, MESSAGE_TTL_IN_SECONDS)).block();
+                        String techTalkName = faker.funnyName().name();
+                        int categoryId = i % 3;
+                        int levelId = i % 2;
+
+                        TechTalk techTalk = new TechTalk(i+1, techTalkName, categoryId, levelId);
+
+                        log.info("Publishing message: " + techTalk + "on queue :" + pubSubName + " with topic: " + topicName);
+                        client.publishEvent("rabbitmq-pubsub", "techtalks", techTalk, singletonMap(Metadata.TTL_IN_SECONDS, MESSAGE_TTL_IN_SECONDS)).block();
             });
         } catch (Exception e) {
             log.error("Error while publishing messages: " + e.getMessage());
@@ -61,6 +70,9 @@ public class TechTalksProducerController {
 
 @AllArgsConstructor
 @Getter
-class Order {
-    private int orderId;
+class TechTalk {
+    private int Id;
+    private String techTalkName;
+    private int categoryId;
+    private int levelId;
 }
