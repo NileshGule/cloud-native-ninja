@@ -46,16 +46,12 @@ public class TechTalksConsumerController {
     }
 
     private void logTechTalkDetails(TechTalk techTalk){
-        // log Id, techtalkName, levelId and CategoryID
         log.info("---");
         log.info("TechTalk ID : " + techTalk.getId());
         log.info("TechTalk Name : " + techTalk.getTechTalkName());
         log.info("Category ID : " + techTalk.getCategoryId());
         log.info("Level ID : " + techTalk.getLevelId());
         log.info("---");
-
-
-
     }
 }
 

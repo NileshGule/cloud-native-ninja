@@ -48,11 +48,12 @@ public class TechTalksProducerController {
         try (DaprClient client = new DaprClientBuilder().build()){
             IntStream.range(0, numberOfMessages)
                     .forEach(i -> {
-                        String techTalkName = faker.funnyName().name();
-                        int categoryId = i % 3;
-                        int levelId = i % 2;
+                        int techTalkId = faker.number().numberBetween(1, 1000);
+                        String techTalkName = faker.lorem().sentence();
+                        int categoryId = faker.random().nextInt(1, 5);
+                        int levelId = faker.random().nextInt(1, 4);
 
-                        TechTalk techTalk = new TechTalk(i+1, techTalkName, categoryId, levelId);
+                        TechTalk techTalk = new TechTalk(techTalkId, techTalkName, categoryId, levelId);
 
                         log.info("Publishing message: " + techTalk + "on queue :" + pubSubName + " with topic: " + topicName);
                         client.publishEvent("rabbitmq-pubsub", "techtalks", techTalk, singletonMap(Metadata.TTL_IN_SECONDS, MESSAGE_TTL_IN_SECONDS)).block();
