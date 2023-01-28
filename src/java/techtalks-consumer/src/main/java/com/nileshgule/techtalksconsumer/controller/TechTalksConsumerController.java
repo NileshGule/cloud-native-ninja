@@ -1,25 +1,20 @@
-package com.nileshgule.techtalksproducer.controllers;
+package com.nileshgule.techtalksconsumer.controller;
 
-import io.dapr.client.DaprClient;
-import io.dapr.client.DaprClientBuilder;
-import io.dapr.client.domain.Metadata;
+import io.dapr.Topic;
+import io.dapr.client.domain.CloudEvent;
+import lombok.Getter;
+import lombok.Setter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Map;
-import java.util.UUID;
-
-import java.util.stream.IntStream;
-
-import static java.util.Collections.singletonMap;
+import reactor.core.publisher.Mono;
 
 
 @RestController
-@RequestMapping("/api/TechTalks/")
 public class TechTalksConsumerController {
     private static final Logger log = LoggerFactory.getLogger(TechTalksConsumerController.class);
 
@@ -29,20 +24,24 @@ public class TechTalksConsumerController {
     @Value("${PUBSUB_NAME}")
     private String pubsubName;
 
-    @PostMapping(path = "/process", consumes = MediaType.ALL_VALUE)
-    @Topic(pubsubName=pubsubName, name=topicName)
-    public Mono<ResponseEntity> consumeMessage(@RequestBody(required = false) CloudEvent<Order> cloudEvent) {
-        return Mono.fromSupplier(() -> {
-        try {
-            logger.info("Subscriber received: " + cloudEvent.getData().getOrderId());
-            return ResponseEntity.ok("SUCCESS");
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    });
-}
 
- 
+    @Topic(pubsubName="rabbitmq-pubsub", name="techtalks")
+//@Topic(pubsubName="${PUBSUB_NAME}", name="${RABBITMQ_TOPIC}")
+    @PostMapping(path = "/process", consumes = MediaType.ALL_VALUE)
+    public Mono<ResponseEntity> consumeMessage(@RequestBody(required = false) CloudEvent<Order> cloudEvent) {
+
+        return Mono.fromSupplier(() -> {
+            try {
+                log.info("Subscriber received: " + cloudEvent.getData().getOrderId());
+                return ResponseEntity.ok("SUCCESS");
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        });
+//        log.info("Subscriber received: " + cloudEvent.getData().getOrderId());
+//        return ResponseEntity.ok("Success");
+
+    }
 }
 
 @Getter

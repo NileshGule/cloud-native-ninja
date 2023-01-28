@@ -31,21 +31,24 @@ public class TechTalksProducerController {
     private String topicName;
 
     @Value("${PUBSUB_NAME}")
-    private String pubsubName;
+    private String pubSubName;
 
 
     //Time-to-live for messages published.
     private static final String MESSAGE_TTL_IN_SECONDS = "1000";
 
     @GetMapping (name = "/generate")
-    public ResponseEntity<String> produceMessages(@RequestParam Integer numberOfMessages) {
+//    @RequestMapping(value = "/generate", method = RequestMethod.GET)
+    public ResponseEntity<String> produceMessages(@RequestParam(value = "numberOfMessages", defaultValue = "1") int numberOfMessages) {
+        log.info("Publishing messages to topic: " + topicName);
         try (DaprClient client = new DaprClientBuilder().build()){
             IntStream.range(0, numberOfMessages)
                     .forEach(i -> {
                         Order order = new Order(i);
 
-                log.info("Publishing message: " + order );
-                client.publishEvent(pubsubName, topicName, order, singletonMap(Metadata.TTL_IN_SECONDS, MESSAGE_TTL_IN_SECONDS)).block();
+                log.info("Publishing message: " + order + "on queue :" + pubSubName + " with topic: " + topicName);
+//                client.publishEvent(pubSubName, topicName, order, singletonMap(Metadata.TTL_IN_SECONDS, MESSAGE_TTL_IN_SECONDS)).block();
+                        client.publishEvent("rabbitmq-pubsub", "techtalks", order, singletonMap(Metadata.TTL_IN_SECONDS, MESSAGE_TTL_IN_SECONDS)).block();
             });
         } catch (Exception e) {
             log.error("Error while publishing messages: " + e.getMessage());

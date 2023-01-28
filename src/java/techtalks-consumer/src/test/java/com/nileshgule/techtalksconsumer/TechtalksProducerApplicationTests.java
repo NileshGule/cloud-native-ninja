@@ -1,10 +1,10 @@
-package com.nileshgule.techtalksproducer;
+package com.nileshgule.techtalksconsumer;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class TechTalksProducerApplicationTests {
+class TechTalksConsumerApplicationTests {
 
 	@Test
 	void contextLoads() {
