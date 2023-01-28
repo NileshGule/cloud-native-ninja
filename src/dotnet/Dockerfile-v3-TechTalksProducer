@@ -10,7 +10,7 @@ RUN dotnet restore
 
 RUN dotnet publish --configuration Release --output releaseOutput --no-restore
 
-#build runtime image
+#build runtime image with Alpine base image
 FROM mcr.microsoft.com/dotnet/aspnet:7.0-alpine
 
 WORKDIR /producer
