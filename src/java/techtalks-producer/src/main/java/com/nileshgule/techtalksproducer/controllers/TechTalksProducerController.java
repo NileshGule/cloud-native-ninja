@@ -45,9 +45,7 @@ public class TechTalksProducerController {
             IntStream.range(0, numberOfMessages)
                     .forEach(i -> {
                         Order order = new Order(i);
-
-                log.info("Publishing message: " + order + "on queue :" + pubSubName + " with topic: " + topicName);
-//                client.publishEvent(pubSubName, topicName, order, singletonMap(Metadata.TTL_IN_SECONDS, MESSAGE_TTL_IN_SECONDS)).block();
+                        log.info("Publishing message: " + order + "on queue :" + pubSubName + " with topic: " + topicName);
                         client.publishEvent("rabbitmq-pubsub", "techtalks", order, singletonMap(Metadata.TTL_IN_SECONDS, MESSAGE_TTL_IN_SECONDS)).block();
             });
         } catch (Exception e) {
