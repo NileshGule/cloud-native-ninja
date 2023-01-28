@@ -12,6 +12,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
+import java.util.concurrent.TimeUnit;
 
 
 @RestController
@@ -33,6 +34,7 @@ public class TechTalksConsumerController {
         return Mono.fromSupplier(() -> {
             try {
 //                log.info("Subscriber received: " + cloudEvent.getData().getId());
+                TimeUnit.MILLISECONDS.sleep(250);
                 TechTalk techtalk = cloudEvent.getData();
                 logTechTalkDetails(techtalk);
                 return ResponseEntity.ok("SUCCESS");
