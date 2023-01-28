@@ -32,7 +32,9 @@ public class TechTalksConsumerController {
 
         return Mono.fromSupplier(() -> {
             try {
-                log.info("Subscriber received: " + cloudEvent.getData().getId());
+//                log.info("Subscriber received: " + cloudEvent.getData().getId());
+                TechTalk techtalk = cloudEvent.getData();
+                logTechTalkDetails(techtalk);
                 return ResponseEntity.ok("SUCCESS");
             } catch (Exception e) {
                 throw new RuntimeException(e);
@@ -40,6 +42,19 @@ public class TechTalksConsumerController {
         });
 //        log.info("Subscriber received: " + cloudEvent.getData().getOrderId());
 //        return ResponseEntity.ok("Success");
+
+    }
+
+    private void logTechTalkDetails(TechTalk techTalk){
+        // log Id, techtalkName, levelId and CategoryID
+        log.info("---");
+        log.info("TechTalk ID : " + techTalk.getId());
+        log.info("TechTalk Name : " + techTalk.getTechTalkName());
+        log.info("Category ID : " + techTalk.getCategoryId());
+        log.info("Level ID : " + techTalk.getLevelId());
+        log.info("---");
+
+
 
     }
 }
