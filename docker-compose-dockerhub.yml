@@ -2,13 +2,13 @@ version: "3"
 
 services:
   techtalks.producer:
-    image: ngacrregistry.azurecr.io/techtalksproducer:dotnet
+    image: techtalksproducer:dotnet
     build:
       context: src/dotnet
       dockerfile: Dockerfile-V3-TechTalksProducer
 
   techtalks.consumer:
-    image: ngacrregistry.azurecr.io/techtalksconsumer:dotnet
+    image: techtalksconsumer:dotnet
     build:
       context: src/dotnet
       dockerfile: Dockerfile-TechTalksConsumer
