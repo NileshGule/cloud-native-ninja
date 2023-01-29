@@ -1,0 +1,21 @@
+---
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: rabbitmq-consumer-scaled-object
+  namespace: default
+spec:
+  scaleTargetRef:
+    name: rabbitmq-consumer-deployment
+  pollingInterval: 60 # Optional. Default: 30 seconds
+  minReplicaCount: 0 # Optional. Default: 0
+  maxReplicaCount: 30 # Optional. Default: 100
+  triggers:
+    - type: rabbitmq
+      metadata:
+        queueName: techtalks-consumer-techtalks
+        queueLength: "5"
+        protocol: amqp
+      authenticationRef:
+        name: keda-trigger-auth-rabbitmq-conn
+    
