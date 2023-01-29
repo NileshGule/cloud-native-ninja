@@ -54,7 +54,7 @@ docker run --rm `
 --name producer `
 -p 5000:80 `
 -e ASPNETCORE_ENVIRONMENT=Development `
-producer:v1
+nileshgule/techtalksproducer:v3
 
 ```
 
