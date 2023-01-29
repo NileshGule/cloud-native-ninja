@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: rabbitmq-consumer-deployment
+  labels:
+    run: rabbitmq-consumer
+    app: techtalks
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: rabbitmq-consumer
+
+  template:
+    metadata:
+      labels:
+        run: rabbitmq-consumer
+        app: rabbitmq-consumer
+      annotations:
+        dapr.io/enabled: "true"
+        dapr.io/app-id: "techtalks-consumer"
+        dapr.io/app-port: "80"
+        dapr.io/config: "zipkin"
+    spec:
+      containers:
+        - name: rabbitmq-consumer
+          image: ngacrregistry.azurecr.io/nileshgule/techtalksconsumer:dapr
+          # image: nileshgule/techtalksconsumer:rabbitmq-keda-5.0
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: "Development"
+            - name: RABBITMQ_HOST_NAME
+              value: "20.212.110.83"
+            - name: RABBITMQ_USER_NAME
+              value: "user"
+            - name: RABBITMQ_PASSWORD
+              value: "tCUN6UizuwTZ"
+            - name: RABBITMQ_BATCH_SIZE
+              value: "75"
+          resources:
+            requests:
+              cpu: "10m" #1% of a core
+              memory: "150Mi"
+            limits:
+              cpu: "50m" #5% of a core
+              memory: "400Mi"
+          ports:
+            # - containerPort: 8080
+            #   protocol: TCP
+            #   name: metrics-port
+            - containerPort: 80
+              protocol: TCP
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
