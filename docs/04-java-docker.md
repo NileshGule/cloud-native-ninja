@@ -10,4 +10,11 @@ dapr run `
 --components-path ../../../Components `
 -- java -jar target/techtalks-consumer-0.0.1-SNAPSHOT.jar
 
+dapr run `
+--app-port 8081 `
+--app-id java-producer `
+--components-path ../../../Components `
+-- java -jar target/techtalks-producer-0.0.1-SNAPSHOT.jar `
+--server.port=8081
+
 ```

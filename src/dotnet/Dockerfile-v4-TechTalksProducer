@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/sdk:7.0-alpine AS build-env
+FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build-env
 
 WORKDIR /app
 
@@ -10,8 +10,7 @@ RUN dotnet restore
 
 RUN dotnet publish --configuration Release --output releaseOutput --no-restore
 
-#build runtime image
-# FROM mcr.microsoft.com/dotnet/aspnet:7.0-alpine
+#build runtime image with Ubuntu Linux
 FROM mcr.microsoft.com/dotnet/aspnet:7.0-jammy
 
 WORKDIR /producer

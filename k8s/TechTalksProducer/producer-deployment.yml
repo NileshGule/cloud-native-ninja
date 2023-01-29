@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: rabbitmq-producer-deployment
+  labels:
+    run: rabbitmq-producer
+    app: techtalks
+
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      run: rabbitmq-producer
+
+  template:
+    metadata:
+      labels:
+        run: rabbitmq-producer
+        app: techtalks
+      annotations:
+        dapr.io/enabled: "true"
+        dapr.io/app-id: "rabbitmq-producer"
+        dapr.io/app-port: "80"
+        dapr.io/config: "zipkin"
+    spec:
+      containers:
+        - name: techtalksproducer
+          image: ngacrregistry.azurecr.io/nileshgule/techtalksproducer:dapr
+          # image: nileshgule/techtalksproducer:rabbitmq-keda-5.0
+          
+          env:
+            # - name: ASPNETCORE_URLS
+            #   value: http://0.0.0.0:8080
+            - name: RABBITMQ_HOST_NAME
+              value: "rabbitmq"
+            - name: RABBITMQ_USER_NAME
+              value: "user"
+            - name: RABBITMQ_PASSWORD
+              value: "PASSWORD"
+            # - name: RABBITMQ_HOST_NAME
+            #   value: "20.212.110.83"
+            # - name: RABBITMQ_USER_NAME
+            #   value: "user"
+            # - name: RABBITMQ_PASSWORD
+            #   value: "tCUN6UizuwTZ"
+          ports:
+            # - containerPort: 8080
+            - containerPort: 80
+              protocol: TCP
+          resources:
+            requests:
+              cpu: "10m" #1% of a core
+              memory: "200Mi"
+            limits:
+              cpu: "50m" #5% of a core
+              memory: "500Mi"
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
