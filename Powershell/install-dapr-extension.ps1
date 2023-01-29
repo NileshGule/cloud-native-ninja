@@ -1,6 +1,6 @@
 Param(
     [parameter(Mandatory = $false)]
-    [string]$resourceGroupName = "azure-container-app-rg",
+    [string]$resourceGroupName = "demo-azure-singapore-rg",
     [parameter(Mandatory = $false)]
     [string]$clusterName = "azure-singapore-cluster"
 )
@@ -9,6 +9,8 @@ Param(
 Write-Host "Adding Dapr extension to AKS cluster $clusterName"  -ForegroundColor Yellow
 
 az extension add --name k8s-extension
+
+az extension update --name k8s-extension
 
 az k8s-extension create `
     --cluster-type managedClusters `

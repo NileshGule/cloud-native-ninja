@@ -10,7 +10,7 @@ Param(
     [parameter(Mandatory = $false)]
     [int16]$workerNodeCount = 3,
     [parameter(Mandatory = $false)]
-    [string]$kubernetesVersion = "1.25.4",
+    [string]$kubernetesVersion = "1.24.6",
     [parameter(Mandatory = $false)]
     [string]$acrRegistryName = "ngAcrRegistry"
 )
@@ -50,7 +50,8 @@ if ($aksCLusterExists -eq $false) {
         --enable-managed-identity `
         --output=jsonc `
         --kubernetes-version=$kubernetesVersion `
-        --attach-acr=$acrRegistryName 
+        --attach-acr=$acrRegistryName `
+        --enable-keda
 
     #check the status of last command
     if (!$?) {
@@ -66,12 +67,5 @@ az aks get-credentials `
     --overwrite-existing
 
 Write-Host "Successfully created cluster $clusterName with $workerNodeCount node(s)" -ForegroundColor Green
-
-# Write-Host "Creating cluster role binding for Kubernetes dashboard" -ForegroundColor Green
-
-# kubectl create clusterrolebinding kubernetes-dashboard `
-#     -n kube-system `
-#     --clusterrole=cluster-admin `
-#     --serviceaccount=kube-system:kubernetes-dashboard
 
 Set-Location ~/projects/cloud-native-ninja/Powershell

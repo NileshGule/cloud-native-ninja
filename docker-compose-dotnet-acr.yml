@@ -5,7 +5,7 @@ services:
     image: ngacrregistry.azurecr.io/techtalksproducer:dotnet
     build:
       context: src/dotnet
-      dockerfile: Dockerfile-V3-TechTalksProducer
+      dockerfile: Dockerfile-v3-TechTalksProducer
 
   techtalks.consumer:
     image: ngacrregistry.azurecr.io/techtalksconsumer:dotnet

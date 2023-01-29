@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  techtalks.producer:
+    image: ngacrregistry.azurecr.io/techtalksproducer:java
+    build:
+      context: src/java/techtalks-producer
+      dockerfile: Dockerfile-TechTalksProducer
+
+  techtalks.consumer:
+    image: ngacrregistry.azurecr.io/techtalksconsumer:java
+    build:
+      context: src/java/techtalks-consumer
+      dockerfile: Dockerfile

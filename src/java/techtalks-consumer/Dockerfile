@@ -13,7 +13,7 @@ COPY .mvn /app/.mvn
 # # Build the application
 # RUN ./mvnw package -DskipTests
 
-RUN ./mvnw dependency:go-offline
+# RUN ./mvnw dependency:go-offline
 
 # Copy the application files
 COPY src /app/src
@@ -30,11 +30,11 @@ FROM eclipse-temurin:19-jre-alpine
 WORKDIR /app
 
 # Copy the application files
-COPY --from=build /app/target/techtalks-producer-0.0.1-SNAPSHOT.jar TechTalksProducer.jar
+COPY --from=build /app/target/techtalks-consumer-0.0.1-SNAPSHOT.jar TechTalksConsumer.jar
 
 # Expose the application port
 EXPOSE 8080
 
 # Run the application
-ENTRYPOINT ["java", "-jar", "TechTalksProducer.jar"]
+ENTRYPOINT ["java", "-jar", "TechTalksConsumer.jar"]
 
