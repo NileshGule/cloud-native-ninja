@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: rabbitmq-consumer-deployment
+  labels:
+    run: rabbitmq-consumer
+    app: techtalks
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: rabbitmq-consumer
+
+  template:
+    metadata:
+      labels:
+        run: rabbitmq-consumer
+        app: rabbitmq-consumer
+      annotations:
+        dapr.io/enabled: "true"
+        dapr.io/app-id: "techtalks-consumer"
+        dapr.io/app-port: "8080"
+    spec:
+      containers:
+        - name: rabbitmq-consumer
+          image: ngacrregistry.azurecr.io/techtalksconsumer:java
+          ports:
+            - containerPort: 8080
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst

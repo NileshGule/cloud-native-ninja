@@ -69,3 +69,20 @@ az aks get-credentials `
 Write-Host "Successfully created cluster $clusterName with $workerNodeCount node(s)" -ForegroundColor Green
 
 Set-Location ~/projects/cloud-native-ninja/Powershell
+
+az vm create `
+    --resource-group demo-azure-singapore-rg `
+    --name rabbitmq-new `
+    --admin-username azureuser `
+    --generate-ssh-keys `
+    --image bitnami:rabbitmq:rabbitmq:latest `
+    --plan-name rabbitmq `
+    --plan-product rabbitmq `
+    --plan-publisher bitnami `
+    --public-ip-sku Standard
+
+az vm open-port --port 5672 --name rabbitmq  `
+    --resource-group demo-azure-singapore-rg
+
+az vm open-port --port 15672 --name rabbitmq `
+    --resource-group demo-azure-singapore-rg --priority 1100

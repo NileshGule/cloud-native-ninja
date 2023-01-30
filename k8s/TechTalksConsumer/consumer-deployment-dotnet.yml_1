@@ -21,14 +21,10 @@ spec:
         dapr.io/enabled: "true"
         dapr.io/app-id: "techtalks-consumer"
         dapr.io/app-port: "80"
-        # dapr.io/app-port: "8080"
-        # dapr.io/config: "zipkin"
-        # dapr.io/sidecar-liveness-probe-delay-seconds: "60"
     spec:
       containers:
         - name: rabbitmq-consumer
           image: ngacrregistry.azurecr.io/techtalksconsumer:dotnet
-          # image: ngacrregistry.azurecr.io/techtalksconsumer:java
           resources:
             requests:
               cpu: "10m" #1% of a core
@@ -37,9 +33,6 @@ spec:
               cpu: "50m" #5% of a core
               memory: "400Mi"
           ports:
-            # - containerPort: 8080
-            #   protocol: TCP
-            #   name: metrics-port
             - containerPort: 80
               protocol: TCP
           imagePullPolicy: Always
