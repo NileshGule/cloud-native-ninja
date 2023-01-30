@@ -81,6 +81,9 @@ This repository is a work in progress. I will be adding more content to the repo
 
 [![Cloud Native Ninja Part 2 - Distributed Microservices with Dapr](/images/cloud-native-ninja-pt2-distributed-microservices-with-dapr.png)](https://youtu.be/ep_IJ9d0Nqw)
 
+- Cloud Native Ninja Part 3 - Contianerize .NET Applicaions
+
+[![Cloud Native Ninja Part 3 - Contianerize .NET Applicaions](/images/cloud-native-ninja-pt3-docker-dotnet.png)](https://youtu.be/kyWBnPZmNzM)
 
 
 

@@ -81,8 +81,8 @@ az vm create `
     --plan-publisher bitnami `
     --public-ip-sku Standard
 
-az vm open-port --port 5672 --name rabbitmq  `
+az vm open-port --port 5672 --name rabbitmq-new  `
     --resource-group demo-azure-singapore-rg
 
-az vm open-port --port 15672 --name rabbitmq `
+az vm open-port --port 15672 --name rabbitmq-new `
     --resource-group demo-azure-singapore-rg --priority 1100
