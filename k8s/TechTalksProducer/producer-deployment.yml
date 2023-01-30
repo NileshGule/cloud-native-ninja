@@ -31,9 +31,9 @@ spec:
           image: ngacrregistry.azurecr.io/techtalksproducer:dotnet
           # image: ngacrregistry.azurecr.io/techtalksproducer:java
           
-          # env:
-          #   - name: ASPNETCORE_ENVIRONMENT
-          #     value: Development
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: Development
           ports:
             # - containerPort: 8080
             - containerPort: 80
