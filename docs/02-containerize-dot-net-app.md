@@ -6,13 +6,13 @@ dapr init
 
 dapr run `
 --app-id consumer `
---components-path ../../../Components/ `
+--components-path ../../../Components/local `
 --app-port 6000 `
 -- dotnet run
 
 dapr run `
 --app-id producer `
---components-path ../../../Components/ `
+--components-path ../../../Components/local `
 --app-port 5000 `
 -- dotnet run
 
