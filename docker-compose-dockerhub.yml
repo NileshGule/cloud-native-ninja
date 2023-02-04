@@ -2,13 +2,13 @@ version: "3"
 
 services:
   techtalks.producer:
-    image: techtalksproducer:dotnet
+    image: nileshgule/techtalksproducer:dotnet
     build:
       context: src/dotnet
-      dockerfile: Dockerfile-V3-TechTalksProducer
+      dockerfile: Dockerfile-v3-TechTalksProducer
 
   techtalks.consumer:
-    image: techtalksconsumer:dotnet
+    image: nileshgule/techtalksconsumer:dotnet
     build:
       context: src/dotnet
       dockerfile: Dockerfile-TechTalksConsumer

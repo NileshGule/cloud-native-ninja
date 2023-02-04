@@ -6,5 +6,5 @@ metadata:
 spec:
   secretTargetRef:
   - parameter: host
-    name: keda-rabbitmq-secret
+    name: rabbitmq-secret
     key: host

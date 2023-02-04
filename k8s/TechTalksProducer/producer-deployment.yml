@@ -22,20 +22,15 @@ spec:
         dapr.io/enabled: "true"
         dapr.io/app-id: "rabbitmq-producer"
         dapr.io/app-port: "80"
-        # dapr.io/app-port: "8080"
-        # dapr.io/config: "zipkin"
-        # dapr.io/sidecar-liveness-probe-delay-seconds: "60"
     spec:
       containers:
         - name: techtalksproducer
           image: ngacrregistry.azurecr.io/techtalksproducer:dotnet
-          # image: ngacrregistry.azurecr.io/techtalksproducer:java
           
           env:
             - name: ASPNETCORE_ENVIRONMENT
               value: Development
           ports:
-            # - containerPort: 8080
             - containerPort: 80
               protocol: TCP
           resources:

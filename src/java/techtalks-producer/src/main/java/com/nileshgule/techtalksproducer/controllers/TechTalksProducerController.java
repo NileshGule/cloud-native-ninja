@@ -28,21 +28,11 @@ import static java.util.Collections.singletonMap;
 public class TechTalksProducerController {
     private static final Logger log = LoggerFactory.getLogger(TechTalksProducerController.class);
 
-    @Value("${RABBITMQ_TOPIC}")
-    private String topicName;
-
-    @Value("${PUBSUB_NAME}")
-    private String pubSubName;
-
-
     //Time-to-live for messages published.
     private static final String MESSAGE_TTL_IN_SECONDS = "1000";
 
     @GetMapping (name = "/generate")
-//    @RequestMapping(value = "/generate", method = RequestMethod.GET)
     public ResponseEntity<String> produceMessages(@RequestParam(value = "numberOfMessages", defaultValue = "1") int numberOfMessages) {
-        log.info("Publishing messages to topic: " + topicName);
-
         Faker faker = new Faker();
 
         try (DaprClient client = new DaprClientBuilder().build()){
@@ -55,7 +45,6 @@ public class TechTalksProducerController {
 
                         TechTalk techTalk = new TechTalk(techTalkId, techTalkName, categoryId, levelId);
 
-                        log.info("Publishing message: " + techTalk + "on queue :" + pubSubName + " with topic: " + topicName);
                         client.publishEvent("rabbitmq-pubsub", "techtalks", techTalk, singletonMap(Metadata.TTL_IN_SECONDS, MESSAGE_TTL_IN_SECONDS)).block();
             });
         } catch (Exception e) {

@@ -5,7 +5,7 @@ services:
     image: ngacrregistry.azurecr.io/techtalksproducer:java
     build:
       context: src/java/techtalks-producer
-      dockerfile: Dockerfile-TechTalksProducer
+      dockerfile: Dockerfile
 
   techtalks.consumer:
     image: ngacrregistry.azurecr.io/techtalksconsumer:java

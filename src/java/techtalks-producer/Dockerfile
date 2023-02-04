@@ -13,13 +13,14 @@ COPY .mvn /app/.mvn
 # # Build the application
 # RUN ./mvnw package -DskipTests
 
-RUN ./mvnw dependency:go-offline
+# RUN --mount=type=cache,target=/root/.m2 ./mvnw dependency
 
 # Copy the application files
 COPY src /app/src
 
 # Build the application
-RUN ./mvnw package -DskipTests
+# RUN ./mvnw package -DskipTests
+RUN --mount=type=cache,target=/root/.m2 ./mvnw package -DskipTests
 
 # Create the runtime image
 # FROM openjdk:19-alpine

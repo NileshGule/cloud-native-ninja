@@ -1,5 +1,15 @@
 # Commands for building Java version
 
+## Docker build commands
+
+```Powershell
+
+docker build -t ngacrregistry.azurecr.io/techtalksconsumer:java .
+
+docker build -t ngacrregistry.azurecr.io/techtalksproducer:java .
+
+```
+
 ## Dapr run 
 
 ```Powershell

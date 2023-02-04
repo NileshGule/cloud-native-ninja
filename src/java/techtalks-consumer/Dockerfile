@@ -19,7 +19,9 @@ COPY .mvn /app/.mvn
 COPY src /app/src
 
 # Build the application
-RUN ./mvnw package -DskipTests
+# RUN ./mvnw package -DskipTests
+
+RUN --mount=type=cache,target=/root/.m2 ./mvnw package -DskipTests
 
 # Create the runtime image
 # FROM openjdk:19-alpine
@@ -33,8 +35,9 @@ WORKDIR /app
 COPY --from=build /app/target/techtalks-consumer-0.0.1-SNAPSHOT.jar TechTalksConsumer.jar
 
 # Expose the application port
-EXPOSE 8080
+# EXPOSE 8080
 
 # Run the application
 ENTRYPOINT ["java", "-jar", "TechTalksConsumer.jar"]
+# ENTRYPOINT ["java", "-Djava.net.preferIPv4Stack=true", "-Djava.net.PreferIPv6Addresses=false", "-jar", "TechTalksConsumer.jar"]
 

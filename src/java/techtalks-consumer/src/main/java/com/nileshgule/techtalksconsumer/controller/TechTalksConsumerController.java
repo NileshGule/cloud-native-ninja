@@ -19,21 +19,12 @@ import java.util.concurrent.TimeUnit;
 public class TechTalksConsumerController {
     private static final Logger log = LoggerFactory.getLogger(TechTalksConsumerController.class);
 
-    @Value("${RABBITMQ_TOPIC}")
-    private String topicName;
-
-    @Value("${PUBSUB_NAME}")
-    private String pubsubName;
-
-
     @Topic(pubsubName="rabbitmq-pubsub", name="techtalks")
-//@Topic(pubsubName="${PUBSUB_NAME}", name="${RABBITMQ_TOPIC}")
     @PostMapping(path = "/process", consumes = MediaType.ALL_VALUE)
     public Mono<ResponseEntity> consumeMessage(@RequestBody(required = false) CloudEvent<TechTalk> cloudEvent) {
 
         return Mono.fromSupplier(() -> {
             try {
-//                log.info("Subscriber received: " + cloudEvent.getData().getId());
                 TimeUnit.MILLISECONDS.sleep(250);
                 TechTalk techtalk = cloudEvent.getData();
                 logTechTalkDetails(techtalk);
@@ -42,9 +33,6 @@ public class TechTalksConsumerController {
                 throw new RuntimeException(e);
             }
         });
-//        log.info("Subscriber received: " + cloudEvent.getData().getOrderId());
-//        return ResponseEntity.ok("Success");
-
     }
 
     private void logTechTalkDetails(TechTalk techTalk){

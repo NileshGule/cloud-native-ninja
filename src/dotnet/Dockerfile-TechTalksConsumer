@@ -6,9 +6,11 @@ COPY consumer /consumer/
 COPY TechTalksModel /TechTalksModel/
 
 WORKDIR /consumer
-RUN dotnet restore
+# RUN dotnet restore
 
-RUN dotnet publish --configuration Release --output releaseOutput --no-restore
+RUN --mount=type=cache,id=nuget,target=/root/.nuget/packages dotnet restore
+
+RUN --mount=type=cache,id=nuget,target=/root/.nuget/packages dotnet publish --configuration Release --output releaseOutput --no-restore
 
 #build runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:7.0-alpine

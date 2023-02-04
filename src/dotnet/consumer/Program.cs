@@ -46,8 +46,8 @@ app.MapPost("/process", ([FromBody] TechTalk techTalk) =>
 app.UseHttpsRedirection();
 
 //local mode
-app.Run("http://localhost:6000");
+// app.Run("http://localhost:6000");
 
 // //default mode
-// app.Run();
+app.Run();
 

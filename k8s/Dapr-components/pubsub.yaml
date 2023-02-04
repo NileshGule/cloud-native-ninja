@@ -8,7 +8,7 @@ spec:
   metadata:
   - name: connectionString
     secretKeyRef:
-      name: keda-rabbitmq-secret
+      name: rabbitmq-secret
       key: host
   # - name: connectionString
   #   # value: "amqp://<<user name>>:<<password>>@<<host>>:5672/"
