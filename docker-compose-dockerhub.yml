@@ -12,3 +12,5 @@ services:
     build:
       context: src/dotnet
       dockerfile: Dockerfile-TechTalksConsumer
+    
+        

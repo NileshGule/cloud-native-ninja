@@ -32,8 +32,8 @@ app.MapPost("/process", ([FromBody] TechTalk techTalk) =>
     Console.WriteLine("----------");
     Console.WriteLine($"Tech Talk Id : {techTalk.Id}");
     Console.WriteLine($"Tech Talk Name : {techTalk.TechTalkName}");
-    Console.WriteLine($"Category : {techTalk.CategoryId}");
-    Console.WriteLine($"Level : {techTalk.LevelId}");
+    Console.WriteLine($"Tech Talk Category : {techTalk.CategoryId}");
+    Console.WriteLine($"Tech Talk Level : {techTalk.LevelId}");
     Console.WriteLine("----------");
     Console.WriteLine();
 

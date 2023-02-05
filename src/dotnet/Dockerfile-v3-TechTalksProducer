@@ -7,16 +7,16 @@ COPY TechTalksModel /TechTalksModel/
 
 WORKDIR /producer
 # RUN dotnet restore
+# RUN dotnet publish --configuration Release --output producerRelease --no-restore
 
 RUN --mount=type=cache,id=nuget,target=/root/.nuget/packages dotnet restore
-
-RUN --mount=type=cache,id=nuget,target=/root/.nuget/packages dotnet publish --configuration Release --output releaseOutput --no-restore
+RUN --mount=type=cache,id=nuget,target=/root/.nuget/packages dotnet publish --configuration Release --output producerRelease --no-restore
 
 #build runtime image with Alpine base image
 FROM mcr.microsoft.com/dotnet/aspnet:7.0-alpine
 
 WORKDIR /producer
 
-COPY --from=build-env /producer/releaseOutput ./
+COPY --from=build-env /producer/producerRelease ./
 
 ENTRYPOINT ["dotnet", "producer.dll"]
