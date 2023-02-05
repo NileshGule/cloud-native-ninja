@@ -24,11 +24,17 @@ docker build -t producer .
 
 docker build -t producer:v1 .
 
-docker build -f .\Dockerfile-v2-TechTalksProducer -t nileshgule/techtalksproducer:v2 .
+docker build `
+-f .\Dockerfile-v2-TechTalksProducer `
+-t nileshgule/techtalksproducer:v2 .
 
-docker build -f .\Dockerfile-v3-TechTalksProducer -t nileshgule/techtalksproducer:v3 .
+docker build `
+-f .\Dockerfile-v3-TechTalksProducer `
+-t nileshgule/techtalksproducer:v3 .
 
-docker build -f .\Dockerfile-v4-TechTalksProducer -t nileshgule/techtalksproducer:v4 .
+docker build `
+-f .\Dockerfile-v4-TechTalksProducer `
+-t nileshgule/techtalksproducer:v4 .
 
 ```
 
@@ -62,7 +68,9 @@ nileshgule/techtalksproducer:v3
 
 ```Powershell
 
-docker build -f .\Dockerfile-TechTalksConsumer -t nileshgule/techtalksconsumer:dotnet .
+docker build `
+-f .\Dockerfile-TechTalksConsumer `
+-t nileshgule/techtalksconsumer:dotnet .
 
 ```
 
@@ -81,5 +89,12 @@ docker run --rm `
 -p 5000:80 `
 -e ASPNETCORE_ENVIRONMENT=Development `
 nileshgule/techtalksproducer:dotnet
+
+docker run --rm `
+-it `
+--name techtalksconsumer `
+-p 5001:80 `
+-e ASPNETCORE_ENVIRONMENT=Development `
+nileshgule/techtalksconsumer:dotnet
 
 ```
