@@ -24,7 +24,8 @@ spec:
     spec:
       containers:
         - name: rabbitmq-consumer
-          image: ngacrregistry.azurecr.io/techtalksconsumer:dotnet
+          # image: ngacrregistry.azurecr.io/techtalksconsumer:dotnet
+          image: nileshgule/techtalksconsumer:dotnet
           resources:
             requests:
               cpu: "10m" #1% of a core

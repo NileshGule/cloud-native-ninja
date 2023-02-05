@@ -26,7 +26,8 @@ spec:
     spec:
       containers:
         - name: rabbitmq-consumer
-          image: ngacrregistry.azurecr.io/techtalksconsumer:java
+          # image: ngacrregistry.azurecr.io/techtalksconsumer:java
+          image: nileshgule/techtalksconsumer:java
           ports:
             - containerPort: 8080
           imagePullPolicy: Always

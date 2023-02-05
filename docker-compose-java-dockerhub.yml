@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  techtalks.producer:
+    image: nileshgule/techtalksproducer:java
+    build:
+      context: src/java/techtalks-producer
+      dockerfile: Dockerfile
+
+  techtalks.consumer:
+    image: nileshgule/techtalksconsumer:java
+    build:
+      context: src/java/techtalks-consumer
+      dockerfile: Dockerfile
