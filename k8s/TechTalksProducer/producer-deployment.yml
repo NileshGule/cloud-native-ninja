@@ -26,7 +26,8 @@ spec:
       containers:
         - name: techtalksproducer
           # image: ngacrregistry.azurecr.io/techtalksproducer:dotnet
-          image: nileshgule/techtalksproducer:dotnet
+          # image: nileshgule/techtalksproducer:dotnet
+          image: nileshgule/techtalksproducer:java
           
           env:
             - name: ASPNETCORE_ENVIRONMENT

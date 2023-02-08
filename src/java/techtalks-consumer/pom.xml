@@ -15,7 +15,8 @@
 	<name>techtalks-consumer</name>
 	<description>TechTalks consumer</description>
 	<properties>
-		<java.version>19</java.version>
+		<!-- <java.version>19</java.version> -->
+		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
