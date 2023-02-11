@@ -23,8 +23,13 @@ func main() {
 
 func produceMessages(w http.ResponseWriter, r *http.Request) {
 	// get number of messages to produce from URL parameter
+	log.Println("Received request to produce messages")
+
 	vars := mux.Vars(r)
 	numberOfTalks, err := strconv.Atoi(vars["numberOfTalks"])
+
+	fmt.Fprintf(w, "Successfully produced %d messages to RabbitMQ", numberOfTalks)
+
 	if err != nil {
 		http.Error(w, "invalid number of messages", http.StatusBadRequest)
 		return
