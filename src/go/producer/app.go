@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
@@ -17,7 +18,7 @@ const (
 
 func main() {
 	router := mux.NewRouter()
-	router.HandleFunc("/generate/{numberOfTalks}", produceMessages).Methods("GET")
+	router.HandleFunc("/generate/{num}", produceMessages).Methods("GET")
 	log.Fatal(http.ListenAndServe(":8080", router))
 }
 
@@ -26,9 +27,11 @@ func produceMessages(w http.ResponseWriter, r *http.Request) {
 	log.Println("Received request to produce messages")
 
 	vars := mux.Vars(r)
-	numberOfTalks, err := strconv.Atoi(vars["numberOfTalks"])
+	talks := vars["num"]
+	log.Println("Number of talks: ", talks)
 
-	fmt.Fprintf(w, "Successfully produced %d messages to RabbitMQ", numberOfTalks)
+	// numberOfTalks, err := strconv.Atoi(vars["num"])
+	numberOfTalks, err := strconv.Atoi(talks)
 
 	if err != nil {
 		http.Error(w, "invalid number of messages", http.StatusBadRequest)
@@ -56,11 +59,26 @@ func produceMessages(w http.ResponseWriter, r *http.Request) {
 	for i := 0; i < numberOfTalks; i++ {
 		message := fmt.Sprintf("message %d", i)
 
-		if err := client.PublishEvent(ctx, pubsubComponentName, pubsubTopic, []byte(message)); err != nil {
-			http.Error(w, fmt.Sprintf("error publishing message: %v", err), http.StatusInternalServerError)
-			return
+		techTalk := TechTalk{Id: i, TechTalkName: message, CategoryId: 1, LevelId: 1}
+
+		serializedTalk, err := json.Marshal(techTalk)
+
+		if err != nil {
+			http.Error(w, fmt.Sprintf("error serializing message: %v", err), http.StatusInternalServerError)
+		} else {
+			if err := client.PublishEvent(ctx, pubsubComponentName, pubsubTopic, serializedTalk); err != nil {
+				http.Error(w, fmt.Sprintf("error publishing message: %v", err), http.StatusInternalServerError)
+				return
+			}
 		}
 	}
 
 	fmt.Fprintf(w, "Successfully produced %d messages to RabbitMQ", numberOfTalks)
+}
+
+type TechTalk struct {
+	Id           int    `json:"id"`
+	TechTalkName string `json:"TechTalkName"`
+	CategoryId   int    `json:"CategoryId"`
+	LevelId      int    `json:"LevelId"`
 }

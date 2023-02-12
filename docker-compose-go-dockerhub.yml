@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  techtalks.producer:
+    image: nileshgule/techtalksproducer:go
+    build:
+      context: src/go/producer
+      dockerfile: Dockerfile
+
+  techtalks.consumer:
+    image: nileshgule/techtalksconsumer:go
+    build:
+      context: src/go/consumer
+      dockerfile: Dockerfile

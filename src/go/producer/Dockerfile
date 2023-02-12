@@ -1,0 +1,18 @@
+# builder image
+FROM golang:1.20-alpine as builder
+RUN mkdir /build
+# ADD *.go /build/
+COPY . /build/
+WORKDIR /build
+# RUN CGO_ENABLED=0 GOOS=linux go build -a -o producer .
+
+RUN --mount=type=cache,target=/root/.cache/go-build \
+    CGO_ENABLED=0 GOOS=linux go build -a -o producer .
+
+
+# generate clean, final image for end users
+FROM alpine:3.17
+COPY --from=builder /build/producer .
+
+# executable
+ENTRYPOINT [ "./producer" ]
