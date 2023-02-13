@@ -45,21 +45,20 @@ func eventHandler(ctx context.Context, e *common.TopicEvent) (retry bool, err er
 
 	var techTalk TechTalk
 
+	// fmt.Println("Subscriber received:", e.RawData)
 	fmt.Println("Subscriber received:", e.Data)
 
-	// err = json.Unmarshal([]byte(e.Data), &techTalk)
+	jsonData := e.Data.(map[string]interface{})
+	fmt.Println("jsonData: ", jsonData)
 
-	var kpi interface{} = e.Data
-	var a []TechTalk
-	err = json.Unmarshal([]byte(kpi.(string)), &a)
-	if err != nil {
-		fmt.Println("error:", err)
+	if data, err := json.Marshal(jsonData); err == nil {
+		json.Unmarshal(data, &techTalk)
 	}
-	fmt.Println(a)
-	// if err != nil {
-	// 	fmt.Println("Error unmarshalling data: ", err)
-	// 	return false, err
-	// }
+
+	// fmt.Println("TechTalk Id: ", jsonData["id"])
+	// fmt.Println("TechTalk name: ", jsonData["TechTalkName"])
+	// fmt.Println("TechTalk Category : ", jsonData["CategoryId"])
+	// fmt.Println("TechTalk Level: ", jsonData["LevelId"])
 
 	fmt.Println("TechTalk Id: ", techTalk.Id)
 	fmt.Println("TechTalk name: ", techTalk.TechTalkName)

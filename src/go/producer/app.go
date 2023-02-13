@@ -66,7 +66,9 @@ func produceMessages(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			http.Error(w, fmt.Sprintf("error serializing message: %v", err), http.StatusInternalServerError)
 		} else {
-			if err := client.PublishEvent(ctx, pubsubComponentName, pubsubTopic, serializedTalk); err != nil {
+			// if err := client.PublishEvent(ctx, pubsubComponentName, pubsubTopic, serializedTalk); err != nil {
+			if err := client.PublishEvent(ctx, pubsubComponentName, pubsubTopic, techTalk); err != nil {
+				// if err := client.PublishEvent(ctx, pubsubComponentName, pubsubTopic, string(serializedTalk)); err != nil {
 				http.Error(w, fmt.Sprintf("error publishing message: %v", err), http.StatusInternalServerError)
 				return
 			}
