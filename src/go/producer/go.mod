@@ -3,6 +3,8 @@ module github.com/NileshGule/cloud-native-ninja/producer
 go 1.20
 
 require (
+	github.com/bxcodec/faker/v3 v3.8.1 // indirect
+	github.com/bxcodec/faker/v4 v4.0.0-beta.3 // indirect
 	github.com/dapr/go-sdk v1.7.0 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/gorilla/mux v1.8.0 // indirect

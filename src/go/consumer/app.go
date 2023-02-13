@@ -55,11 +55,6 @@ func eventHandler(ctx context.Context, e *common.TopicEvent) (retry bool, err er
 		json.Unmarshal(data, &techTalk)
 	}
 
-	// fmt.Println("TechTalk Id: ", jsonData["id"])
-	// fmt.Println("TechTalk name: ", jsonData["TechTalkName"])
-	// fmt.Println("TechTalk Category : ", jsonData["CategoryId"])
-	// fmt.Println("TechTalk Level: ", jsonData["LevelId"])
-
 	fmt.Println("TechTalk Id: ", techTalk.Id)
 	fmt.Println("TechTalk name: ", techTalk.TechTalkName)
 	fmt.Println("TechTalk Category : ", techTalk.CategoryId)

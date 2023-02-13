@@ -1,12 +1,12 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
 	"strconv"
 
+	"github.com/bxcodec/faker/v4"
 	dapr "github.com/dapr/go-sdk/client"
 	"github.com/gorilla/mux"
 )
@@ -57,18 +57,26 @@ func produceMessages(w http.ResponseWriter, r *http.Request) {
 
 	// produce messages
 	for i := 0; i < numberOfTalks; i++ {
-		message := fmt.Sprintf("message %d", i)
 
-		techTalk := TechTalk{Id: i, TechTalkName: message, CategoryId: 1, LevelId: 1}
+		// use faker to create fields related to the TechTalk struct
+		techTalkID, _ := faker.RandomInt(1, numberOfTalks, 1)
+		techTalkName := faker.Name()
+		techTalkCategory, _ := faker.RandomInt(1, 4, 1)
+		techTalkLevel, _ := faker.RandomInt(1, 3, 1)
 
-		serializedTalk, err := json.Marshal(techTalk)
+		log.Println("TechTalk Id: ", techTalkID)
+		log.Println("TechTalk Name: ", techTalkName)
+		log.Println("TechTalk Category: ", techTalkCategory)
+		log.Println("TechTalk Level: ", techTalkLevel)
+
+		techTalk := TechTalk{Id: techTalkID[0], TechTalkName: techTalkName, CategoryId: techTalkCategory[0], LevelId: techTalkLevel[0]}
+
+		// techTalk := TechTalk{}
 
 		if err != nil {
 			http.Error(w, fmt.Sprintf("error serializing message: %v", err), http.StatusInternalServerError)
 		} else {
-			// if err := client.PublishEvent(ctx, pubsubComponentName, pubsubTopic, serializedTalk); err != nil {
 			if err := client.PublishEvent(ctx, pubsubComponentName, pubsubTopic, techTalk); err != nil {
-				// if err := client.PublishEvent(ctx, pubsubComponentName, pubsubTopic, string(serializedTalk)); err != nil {
 				http.Error(w, fmt.Sprintf("error publishing message: %v", err), http.StatusInternalServerError)
 				return
 			}
