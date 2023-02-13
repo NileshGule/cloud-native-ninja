@@ -38,13 +38,6 @@ func produceMessages(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// get rabbitMQ topic name from environment variable
-	// topicName := os.Getenv("RABBITMQ_TOPIC")
-	// if topicName == "" {
-	// 	http.Error(w, "RABBITMQ_TOPIC environment variable not set", http.StatusInternalServerError)
-	// 	return
-	// }
-
 	// create Dapr pubsub client
 	client, err := dapr.NewClient()
 	if err != nil {
@@ -64,14 +57,7 @@ func produceMessages(w http.ResponseWriter, r *http.Request) {
 		techTalkCategory, _ := faker.RandomInt(1, 4, 1)
 		techTalkLevel, _ := faker.RandomInt(1, 3, 1)
 
-		log.Println("TechTalk Id: ", techTalkID)
-		log.Println("TechTalk Name: ", techTalkName)
-		log.Println("TechTalk Category: ", techTalkCategory)
-		log.Println("TechTalk Level: ", techTalkLevel)
-
 		techTalk := TechTalk{Id: techTalkID[0], TechTalkName: techTalkName, CategoryId: techTalkCategory[0], LevelId: techTalkLevel[0]}
-
-		// techTalk := TechTalk{}
 
 		if err != nil {
 			http.Error(w, fmt.Sprintf("error serializing message: %v", err), http.StatusInternalServerError)
