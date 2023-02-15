@@ -81,9 +81,17 @@ This repository is a work in progress. I will be adding more content to the repo
 
 [![Cloud Native Ninja Part 2 - Distributed Microservices with Dapr](/images/cloud-native-ninja-pt2-distributed-microservices-with-dapr.png)](https://youtu.be/ep_IJ9d0Nqw)
 
-- Cloud Native Ninja Part 3 - Contianerize .NET Applicaions
+- Cloud Native Ninja Part 3 - Containerize .NET Applications
 
-[![Cloud Native Ninja Part 3 - Contianerize .NET Applicaions](/images/cloud-native-ninja-pt3-docker-dotnet.png)](https://youtu.be/kyWBnPZmNzM)
+[![Cloud Native Ninja Part 3 - Containerize .NET Applications](/images/cloud-native-ninja-pt3-docker-dotnet.png)](https://youtu.be/kyWBnPZmNzM)
+
+- Cloud Native Ninja Part 4 - Manage multi container apps with Docker Compose
+
+[![Cloud Native Ninja Part 4 - Manage multi container apps with Docker Compose](/images/cloud-native-ninja-pt4-docker-compose.png)](https://youtu.be/FOucMXEza-U)
+
+- Cloud Native Ninja Part 5 - Publish container images to Docker Hub
+
+[![Cloud Native Ninja Part 5 - Publish container images to Docker Hub](/images/cloud-native-ninja-pt4-docker-hub.png)](https://youtu.be/SqfyhfV4pNo)
 
 
 
