@@ -6,7 +6,7 @@ COPY . /build/
 WORKDIR /build
 # RUN CGO_ENABLED=0 GOOS=linux go build -a -o producer .
 
-RUN --mount=type=cache,target=/root/.cache/go-build \
+RUN --mount=type=cache,id=gobuild,target=/root/.cache/go-build \
     CGO_ENABLED=0 GOOS=linux go build -a -o producer .
 
 
