@@ -91,7 +91,7 @@ This repository is a work in progress. I will be adding more content to the repo
 
 - Cloud Native Ninja Part 5 - Publish container images to Docker Hub
 
-[![Cloud Native Ninja Part 5 - Publish container images to Docker Hub](/images/cloud-native-ninja-pt4-docker-hub.png)](https://youtu.be/SqfyhfV4pNo)
+[![Cloud Native Ninja Part 5 - Publish container images to Docker Hub](/images/cloud-native-ninja-pt5-docker-hub.png)](https://youtu.be/SqfyhfV4pNo)
 
 
 
