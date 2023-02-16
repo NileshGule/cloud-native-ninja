@@ -12,8 +12,8 @@ metadata:
     dapr.io/app-port: "8080"
     dapr.io/config: "zipkin"
 spec:
-  # type: LoadBalancer
-  type: ClusterIP
+  type: LoadBalancer
+  # type: ClusterIP
   ports:
     - port: 8080
       targetPort: 8080

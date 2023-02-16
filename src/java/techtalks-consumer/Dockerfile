@@ -9,11 +9,6 @@ COPY pom.xml /app/pom.xml
 COPY mvnw /app/mvnw
 COPY .mvn /app/.mvn
 
-# # Build the application
-# RUN ./mvnw package -DskipTests
-
-# RUN --mount=type=cache,target=/root/.m2 ./mvnw dependency
-
 # Copy the application files
 COPY src /app/src
 

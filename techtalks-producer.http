@@ -1,3 +1,8 @@
 # http://localhost:8081/api/TechTalks/?numberOfMessages=500
 
-http://20.197.107.149/generate/?numberOfTalks=5000
+# http://20.197.107.149/generate/?numberOfTalks=5000
+
+# second request
+
+http://104.43.55.254:8080/generate/10000
+

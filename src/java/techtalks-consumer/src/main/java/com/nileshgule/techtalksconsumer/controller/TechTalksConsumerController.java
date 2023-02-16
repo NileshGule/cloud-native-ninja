@@ -2,12 +2,9 @@ package com.nileshgule.techtalksconsumer.controller;
 
 import io.dapr.Topic;
 import io.dapr.client.domain.CloudEvent;
-import lombok.Getter;
-import lombok.Setter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -37,19 +34,12 @@ public class TechTalksConsumerController {
 
     private void logTechTalkDetails(TechTalk techTalk){
         log.info("---");
-        log.info("TechTalk ID : " + techTalk.getId());
-        log.info("TechTalk Name : " + techTalk.getTechTalkName());
-        log.info("Category ID : " + techTalk.getCategoryId());
-        log.info("Level ID : " + techTalk.getLevelId());
+        log.info("TechTalk ID : " + techTalk.Id());
+        log.info("TechTalk Name : " + techTalk.techTalkName());
+        log.info("Category ID : " + techTalk.categoryId());
+        log.info("Level ID : " + techTalk.levelId());
         log.info("---");
     }
 }
 
-@Getter
-@Setter
-class TechTalk {
-    private int Id;
-    private String techTalkName;
-    private int categoryId;
-    private int levelId;
-}
+record TechTalk(int Id, String techTalkName, int categoryId, int levelId) {}

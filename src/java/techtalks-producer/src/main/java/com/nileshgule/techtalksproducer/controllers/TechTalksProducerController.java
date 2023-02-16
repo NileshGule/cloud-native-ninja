@@ -4,19 +4,11 @@ import com.github.javafaker.Faker;
 import io.dapr.client.DaprClient;
 import io.dapr.client.DaprClientBuilder;
 import io.dapr.client.domain.Metadata;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Map;
-import java.util.UUID;
 
 import java.util.stream.IntStream;
 
@@ -56,13 +48,4 @@ public class TechTalksProducerController {
     }
 }
 
-
-
-@AllArgsConstructor
-@Getter
-class TechTalk {
-    private int Id;
-    private String techTalkName;
-    private int categoryId;
-    private int levelId;
-}
+record TechTalk(int Id, String techTalkName, int categoryId, int levelId) {}

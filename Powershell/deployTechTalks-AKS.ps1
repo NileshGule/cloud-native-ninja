@@ -16,7 +16,8 @@ Write-Host "Starting deployment of TechTalks application and services" -Foregrou
 
 Write-Host "Deploying Tech Talks Consumer " -ForegroundColor Yellow
 Set-Location $techTalksConsumerRootDirectory
-kubectl apply --filename consumer-deployment.yml
+# kubectl apply --filename consumer-deployment.yml
+kubectl apply --recursive --filename .
 
 Write-Host "Tech talks Consumer service deployed successfully" -ForegroundColor Cyan
 
