@@ -45,7 +45,6 @@ func eventHandler(ctx context.Context, e *common.TopicEvent) (retry bool, err er
 
 	var techTalk TechTalk
 
-	// fmt.Println("Subscriber received:", e.RawData)
 	fmt.Println("Subscriber received:", e.Data)
 
 	jsonData := e.Data.(map[string]interface{})
