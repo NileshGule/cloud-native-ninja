@@ -28,3 +28,22 @@ dapr run `
 --server.port=8081
 
 ```
+
+## Docker run commands
+
+```Powershell
+
+docker run --rm `
+-it `
+--name techtalksproducer `
+-p 8081:8080 `
+nileshgule/techtalksproducer:java
+
+
+docker run --rm `
+-it `
+--name techtalksconsumer `
+-p 8080:8080 `
+nileshgule/techtalksconsumer:java
+
+```

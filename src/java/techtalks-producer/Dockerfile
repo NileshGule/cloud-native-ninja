@@ -15,6 +15,7 @@ COPY src /app/src
 # RUN ./mvnw package -DskipTests
 RUN --mount=type=cache,id=maven,target=/root/.m2 ./mvnw package -DskipTests
 
+# Create the runtime image
 FROM eclipse-temurin:17-jre-alpine
 
 # Set the working directory
@@ -28,4 +29,3 @@ EXPOSE 8080
 
 # Run the application
 ENTRYPOINT ["java", "-jar", "TechTalksProducer.jar"]
-
