@@ -1,5 +1,15 @@
 # Commands for building Go version
 
+## Build application
+
+```Powershell
+
+go build 
+
+go clean
+
+```
+
 ## Docker build commands
 
 ```Powershell
@@ -43,16 +53,16 @@ dapr run `
 ```Powershell
 
 docker run --rm `
--it `
+-d `
 --name techtalksproducer `
--p 8081:8080 `
+-p 8080:8080 `
 nileshgule/techtalksproducer:go
 
 
 docker run --rm `
--it `
+-d `
 --name techtalksconsumer `
--p 8080:8080 `
+-p 8081:8080 `
 nileshgule/techtalksconsumer:go
 
 ```

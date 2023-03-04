@@ -21,6 +21,7 @@ spec:
         dapr.io/enabled: "true"
         dapr.io/app-id: "techtalks-consumer"
         dapr.io/app-port: "8081"
+        dapr.io/config: "zipkin"
         # dapr.io/app-health-probe-interval: "60"
         # dapr.io/app-health-probe-timeout: "60"
     spec:

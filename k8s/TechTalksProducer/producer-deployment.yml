@@ -22,13 +22,14 @@ spec:
         dapr.io/enabled: "true"
         dapr.io/app-id: "rabbitmq-producer"
         dapr.io/app-port: "8080"
+        dapr.io/config: "zipkin"
     spec:
       containers:
         - name: techtalksproducer
           # image: ngacrregistry.azurecr.io/techtalksproducer:dotnet
-          # image: nileshgule/techtalksproducer:dotnet
+          image: nileshgule/techtalksproducer:dotnet
           # image: nileshgule/techtalksproducer:java
-          image: nileshgule/techtalksproducer:go
+          # image: nileshgule/techtalksproducer:go
           
           env:
             - name: ASPNETCORE_ENVIRONMENT
