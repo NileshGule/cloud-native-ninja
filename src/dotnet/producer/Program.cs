@@ -50,7 +50,7 @@ app.MapGet("/generate", (int numberOfTalks) =>
         });
     }
 
-    Console.WriteLine($"Published {numberOfTalks} TechTalks to message queue");
+    Console.WriteLine($"Published {numberOfTalks} TechTalks to {topicName} message queue");
 
 })
 .WithOpenApi();
