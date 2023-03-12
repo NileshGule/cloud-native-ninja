@@ -97,7 +97,11 @@ This repository is a work in progress. I will be adding more content to the repo
 
 [![Cloud Native Ninja Part 6 - Containerize Spring Boot Apps](/images/cloud-native-ninja-pt6-spring-boot.png)](https://youtu.be/c9L89T8BkZ4)
 
+- Cloud Native Ninja Part 7 - Containerize Go Apps
 
+[![Cloud Native Ninja Part 7 - Containerize Go Apps](/images/cloud-native-ninja-pt7-container-ze-go-apps.png)](https://youtu.be/6ji4biaYx98)
+
+cloud-native-ninja-pt7-containerize-Go-apps.png
 
 
 
