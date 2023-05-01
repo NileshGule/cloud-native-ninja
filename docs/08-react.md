@@ -23,3 +23,11 @@ docker build -t nileshgule/techtalksui:react .
 docker run -p 3000:80 nileshgule/techtalksui:react
 
 ```
+
+## Push Docker image to Docker Hub
+
+```bash 
+
+docker push nileshgule/techtalksui:react 
+
+```

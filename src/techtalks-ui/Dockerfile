@@ -4,14 +4,11 @@ WORKDIR /app
 
 COPY package*.json ./
 
-# RUN npm install
-
-RUN --mount=type=cache,id=npm,target=/root/.npm npm install 
+RUN npm install
 
 COPY . .
 
 RUN npm run build
-# RUN --mount=type=cache,id=npm,target=/root/.npm npm build 
 
 FROM nginx:alpine-slim
 

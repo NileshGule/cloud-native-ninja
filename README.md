@@ -101,7 +101,10 @@ This repository is a work in progress. I will be adding more content to the repo
 
 [![Cloud Native Ninja Part 7 - Containerize Go Apps](/images/cloud-native-ninja-pt7-containerize-Go-apps.png)](https://youtu.be/6ji4biaYx98)
 
-cloud-native-ninja-pt7-containerize-Go-apps.png
+- Cloud Native Ninja Part 8 - Containerize React App
+
+[![Cloud Native Ninja Part 8 - Containerize React App](/images/cloud-native-ninja-pt8-containerize-React-app.png)](https://youtu.be/mmM6btuwqfA)
+
 
 
 
