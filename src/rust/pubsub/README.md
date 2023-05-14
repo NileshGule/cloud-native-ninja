@@ -73,25 +73,27 @@ Run locally
 The Producer
 
 ``` shell
-cargo run --bin producer
+cd publisher
+cargo run 
 ```
 
 The Consumer
 
 ```shell
-cargo run --bin consumer
+cd subscriber
+cargo run 
 ```
 
 With dapr cli
 
 ```shell
 cd publisher
-dapr run --app-id rust-producer --resources-path ../component-resource -- cargo run
+dapr run --app-id producer-rs --resources-path ../component-resource -- cargo run
 ```
 
 ```shell
 cd subscriber
-dapr run --app-id rust-consumer --app-port 50051 --app-protocol grpc --resources-path ../component-resource -- cargo run
+dapr run --app-id subscriber-rs --app-port 50051 --app-protocol grpc --resources-path ../component-resource -- cargo run
 ```
 
 Using Docker
