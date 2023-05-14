@@ -5,6 +5,12 @@ Clone this project.
 ## Requirements
 Follow instructions on how to [install dapr](https://docs.dapr.io/getting-started/).
 
+Install [`chef`](https://github.com/LukeMathWalker/cargo-chef), it is _Cache the dependencies of your Rust project and speed up your Docker builds._
+
+``` shell
+cargo install cargo-chef
+```
+
 ## Install Rabbitmq
 
 ```shell
@@ -79,9 +85,95 @@ cargo run --bin consumer
 With dapr cli
 
 ```shell
-dapr run --app-id rust-producer --resources-path ./component-resource -- cargo run --bin producer
+cd publisher
+dapr run --app-id rust-producer --resources-path ../component-resource -- cargo run
 ```
 
 ```shell
-dapr run --app-id rust-consumer --app-port 50051 --app-protocol grpc --resources-path ./component-resource -- cargo run --bin consumer
+cd subscriber
+dapr run --app-id rust-consumer --app-port 50051 --app-protocol grpc --resources-path ../component-resource -- cargo run
+```
+
+Using Docker
+
+
+```shell
+cd publisher
+docker build -t localhost:32000/producer-rs:0.0.0 .
+```
+
+```shell
+cd subscriber
+docker build -t localhost:32000/subscriber-rs:0.0.0 .
+```
+
+
+## Deploying to kubernetes
+
+Make sure that dapr is installed into your kubernetes cluster.  The example will be deployed onto the `default` namespace.
+
+```shell
+
+# deploy the component
+# check the content of the file component-resource/pubsub.yaml and align with the rabbitmq connection
+kubectl apply -f component-resource/
+
+# Deploy the publisher
+kubectl apply -f publisher/k8s/
+
+# Deploy the subscriber
+kubectl apply -f subscriber/k8s/
+
+```
+## Testing
+
+Publishing messages to RabbitMQ, assuming that the http port of the publisher is on `8080`
+
+```shell
+curl --request POST \
+  --url http://localhost:8080/generate/ \
+  --header 'Content-Type: application/x-www-form-urlencoded' \
+  --data max_messages=150
+```  
+
+Sample output from the subscriber
+
+```shell
+. . .
+ID: 143
+Name: Getting started with Rust - talk id 143
+Level ID: 17670199691767572000
+Content-Type: application/json
+Category ID: 13391924940439720000
+ID: 144
+Name: Getting started with Rust - talk id 144
+Level ID: 5188078044088092000
+Content-Type: application/json
+Category ID: 4665489211947467000
+ID: 145
+Name: Getting started with Rust - talk id 145
+Level ID: 13624757491874765000
+Content-Type: application/json
+Category ID: 17443969959438152000
+ID: 146
+Name: Getting started with Rust - talk id 146
+Level ID: 17091200595655449000
+Content-Type: application/json
+Category ID: 15390673550429307000
+ID: 147
+Name: Getting started with Rust - talk id 147
+Level ID: 1077350143350605200
+Content-Type: application/json
+Category ID: 13352562419077702000
+ID: 148
+Name: Getting started with Rust - talk id 148
+Level ID: 15158588535690630000
+Content-Type: application/json
+Category ID: 15938525462195302000
+ID: 149
+Name: Getting started with Rust - talk id 149
+Level ID: 1162455077349897000
+Content-Type: application/json
+. . .
+
 ```

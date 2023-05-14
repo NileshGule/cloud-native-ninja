@@ -52,6 +52,7 @@ impl AppCallback for AppCallbackService {
     }
 
     /// Subscribes events from Pubsub.
+    /// This is where we do our work
     async fn on_topic_event(
         &self,
         request: Request<TopicEventRequest>,

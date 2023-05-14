@@ -1,9 +1,13 @@
-use rand::prelude::*;
-use serde::{Deserialize, Serialize};
-use std::{collections::HashMap, thread, time::Duration};
+use std::{
+    collections::HashMap,
+    sync::{Arc, Mutex},
+};
 
-const TECHTALKS_TOPIC_NAME: &str = "techtalks";
-const PUBSUB_NAME: &str = "rabbitmq-pubsub";
+use dapr::Client;
+use rand::Rng;
+use serde::{Deserialize, Serialize};
+
+use crate::{PUBSUB_NAME, TECHTALKS_TOPIC_NAME};
 
 #[derive(Serialize, Deserialize, Clone, Debug)]
 struct TechTalks {
@@ -17,19 +21,12 @@ struct TechTalks {
     pub level_id: usize,
 }
 
-#[tokio::main]
-async fn main() -> Result<(), Box<dyn std::error::Error>> {
+pub async fn publish_message(
+    max_message: u32,
+    client_arc: Arc<Mutex<Client<dapr::client::TonicClient>>>,
+) -> Result<(), Box<dyn std::error::Error>> {
     let mut rng = rand::thread_rng();
-    // TODO: Handle this issue in the sdk
-    // Introduce delay so that dapr grpc port is assigned before app tries to connect
-    thread::sleep(Duration::from_secs(2));
-
-    // Get the Dapr port and create a connection
-    let port: u16 = std::env::var("DAPR_GRPC_PORT")?.parse()?;
-    let addr = format!("http://localhost:{}", port);
-
-    // Create the client
-    let mut client = dapr::Client::<dapr::client::TonicClient>::connect(addr).await?;
+    let mut client = client_arc.lock().unwrap();
 
     // name of the pubsub component
     let pubsub_name = PUBSUB_NAME.to_string();
@@ -40,7 +37,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // topic to publish message to
     let topic = TECHTALKS_TOPIC_NAME.to_string();
 
-    for count in 0..10000 {
+    for count in 0..max_message {
         // message metadata
         let mut metadata = HashMap::<String, String>::new();
         metadata.insert("count".to_string(), count.to_string());

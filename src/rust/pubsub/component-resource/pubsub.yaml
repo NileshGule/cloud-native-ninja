@@ -2,13 +2,13 @@ apiVersion: dapr.io/v1alpha1
 kind: Component
 metadata:
   name: rabbitmq-pubsub
-  namespace: default
 spec:
   type: pubsub.rabbitmq
   version: v1
   metadata:
     - name: connectionString
-      value: "amqp://user:4ovBM9eM7hphfurC@localhost:5672/"
+      #value: "amqp://user:4ovBM9eM7hphfurC@localhost:5672/"
+      value: "amqp://user:4ovBM9eM7hphfurC@rabbit-rabbitmq.rabbitmq.svc.cluster.local:5672/"
     - name: durable
       value: "false"
     - name: deletedWhenUnused
