@@ -27,6 +27,8 @@ spec:
       containers:
         - name: techtalksproducer
           # image: ngacrregistry.azurecr.io/techtalksproducer:dotnet
+          # image: ngacrregistry.azurecr.io/techtalksproducer:go
+          # image: ngacrregistry.azurecr.io/techtalksproducer:java
           # image: nileshgule/techtalksproducer:dotnet
           # image: nileshgule/techtalksproducer:java
           image: nileshgule/techtalksproducer:go

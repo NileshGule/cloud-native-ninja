@@ -4,5 +4,8 @@
 
 # second request
 
-http://20.212.95.39:8080/generate/10000
+# http://20.212.95.39:8080/generate/10000
+
+
+http://localhost:8080/generate/10000
 
