@@ -9,6 +9,10 @@ updates:
     directory: "/src/java" # Location of package manifests
     schedule:
       interval: "weekly"
+    ignore:
+      - dependency-name: "io.dapr:dapr-sdk-springboot"
+        # For Express, ignore all updates for version 6 and 8
+        versions: ["1.7.1"]
   - package-ecosystem: "nuget" # See documentation for possible values
     directory: "/src/dotnet" # Location of package manifests
     schedule:
