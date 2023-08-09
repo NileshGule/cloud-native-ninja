@@ -105,6 +105,14 @@ This repository is a work in progress. I will be adding more content to the repo
 
 [![Cloud Native Ninja Part 8 - Containerize React App](/images/cloud-native-ninja-pt8-containerize-React-app.png)](https://youtu.be/mmM6btuwqfA)
 
+- Cloud Native Ninja Part 9 - Getting started with Kubernetes
+
+[![Cloud Native Ninja Part 9 - Getting started with Kubernetes](/images/cloud-native-ninja-pt9-getting-started-with-kubernetes.png)](https://youtu.be/M1Ra4jCMmL0)
+
+- Cloud Native Ninja Part 10 - Kubernetes Deployment
+
+[![Cloud Native Ninja Part 10 - Kubernetes Deployment](/images/cloud-native-ninja-pt10-k8s-deployment.png)](https://youtu.be/M1Ra4jCMmL0)
+
 
 
 
