@@ -68,7 +68,7 @@ kubectl scale deployment techtalks-producer-deployment --replicas=5
 
 ```bash
 
-kubectl create -f producer-deployment.yaml
+kubectl create -f producer-deployment.yml
 
 ```
 
@@ -76,7 +76,7 @@ kubectl create -f producer-deployment.yaml
 
 ```bash
 
-kubectl apply -f producer-deployment.yaml
+kubectl apply -f producer-deployment.yml
 
 ```
 

@@ -8,7 +8,7 @@ metadata:
     app: techtalks
 
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
       run: rabbitmq-producer
