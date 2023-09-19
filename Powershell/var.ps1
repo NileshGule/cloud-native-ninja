@@ -4,3 +4,4 @@ $techTalksProducerRootDirectory = Join-Path $projectRootDirectory "TechTalksProd
 $techTalksConsumerRootDirectory = Join-Path $projectRootDirectory "TechTalksConsumer"
 $autoScalarRootDirectory = Join-Path $projectRootDirectory "AutoScaledConsumer"
 $daprComponentsRootDirectory = Join-Path $projectRootDirectory "Dapr-components"
+$nginxIngressRootDirectory = Join-Path $projectRootDirectory "nginx-ingress"
