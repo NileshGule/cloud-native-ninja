@@ -20,11 +20,5 @@ spec:
             name: rabbitmq-producer-service
             port:
               number: 8080
-      - path: /test/nilesh
-        pathType: ImplementationSpecific
-        backend:
-          service:
-            name: rabbitmq-producer-service
-            port:
-              number: 8080
+      
         
