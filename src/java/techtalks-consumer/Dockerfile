@@ -1,4 +1,6 @@
-FROM eclipse-temurin:17-jdk-alpine AS build
+# FROM eclipse-temurin:17-jdk-alpine AS build
+FROM arm64v8/eclipse-temurin AS build
+
 
 # Set the working directory
 WORKDIR /app
