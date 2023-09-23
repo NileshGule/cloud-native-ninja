@@ -8,7 +8,8 @@ Write-Host "Installing Nginx ingress controller on AKS cluster $clusterName" -Fo
 
 #Helm 3 syntax
 helm upgrade --install `
-    app-ingress ingress-nginx/ingress-nginx 
+    app-ingress ingress-nginx/ingress-nginx `
+    --set controller.service.externalTrafficPolicy=Local     
     # --create-namespace `
     # --namespace ingress
 

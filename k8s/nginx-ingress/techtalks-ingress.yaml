@@ -1,15 +1,15 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: techtalks-ingress
+  name: techtalksingress
   annotations:
-    kubernetes.io/ingress.class: nginx
-    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    # kubernetes.io/ingress.class: nginx
+    # nginx.ingress.kubernetes.io/ssl-redirect: "false"
     nginx.ingress.kubernetes.io/use-regex: "true"
+    # # nginx.ingress.kubernetes.io/rewrite-target: /$1
     nginx.ingress.kubernetes.io/rewrite-target: /$2
-    # nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
-  # ingressClassName: nginx
+  ingressClassName: nginx
   rules:
   - http:
       paths:
@@ -19,5 +19,12 @@ spec:
           service:
             name: rabbitmq-producer-service
             port:
-              number: 80
+              number: 8080
+      - path: /test/nilesh
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: rabbitmq-producer-service
+            port:
+              number: 8080
         
