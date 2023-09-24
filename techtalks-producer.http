@@ -7,5 +7,9 @@
 # http://20.212.95.39:8080/generate/10000
 
 
-http://localhost:8080/generate/1000
+# http://localhost:8080/generate/1000
+
+
+http://40.119.229.178/producer/generate/1000
+
 
