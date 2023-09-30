@@ -113,6 +113,14 @@ This repository is a work in progress. I will be adding more content to the repo
 
 [![Cloud Native Ninja Part 10 - Kubernetes Deployment](/images/cloud-native-ninja-pt10-k8s-deployment.png)](https://youtu.be/M1Ra4jCMmL0)
 
+- Cloud Native Ninja Part 11 - Kubernetes Service
+
+[![Cloud Native Ninja Part 11 - Kubernetes Service](/images/cloud-native-ninja-pt11-kubernetes-service.png)](https://youtu.be/BoviexKVqRI)
+
+- Cloud Native Ninja Part 12 - Kubernetes Ingress
+
+[![Cloud Native Ninja Part 12 - Kubernetes Ingress](/images/cloud-native-ninja-pt12-kubernetes-ingress-nginx.png)](https://youtu.be/pJo18eiMXAs)
+
 
 
 
