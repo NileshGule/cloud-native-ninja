@@ -27,3 +27,7 @@ kubectl get service/app-ingress-ingress-nginx-controller -o yaml
 Run the [Powershell script - deploy-techtalks-ingress.ps1](../Powershell/deploy-techtalks-ingress.ps1) to deploy the Ingress resources.
 
 ``` powershell
+
+pwsh deploy-techtalks-ingress.ps1
+
+```
