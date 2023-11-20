@@ -3,8 +3,10 @@
 ## List all namespaces
 
 ```bash
-
+kubectl get namespace
 kubectl get namespaces
+
+kubectl get ns
 
 ```
 

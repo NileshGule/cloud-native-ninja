@@ -1,0 +1,13 @@
+version: "3"
+
+include:
+  - docker-compose-dotnet-consumer-acr.yml
+
+services:
+  techtalks.producer:
+    image: ngacrregistry.azurecr.io/techtalksproducer:dotnet
+    build:
+      context: src/dotnet
+      dockerfile: Dockerfile-v3-TechTalksProducer
+
+  
