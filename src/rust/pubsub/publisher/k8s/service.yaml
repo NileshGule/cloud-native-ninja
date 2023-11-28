@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: message-producer
+  labels:
+    app.kubernetes.io/name: producer-rs
+    app.kubernetes.io/part-of: techtalks
+    app.kubernetes.io/component: dapr
+  annotations:
+    dapr.io/enabled: "true"
+    dapr.io/app-id: "producer-rs"
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8080
+      targetPort: 8080
+      name: http-port
+      protocol: TCP
+  selector:
+    app.kubernetes.io/name: producer-rs
+    app.kubernetes.io/part-of: techtalks
+    app.kubernetes.io/component: dapr

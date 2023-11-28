@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: message-subscriber
+  labels:
+    app.kubernetes.io/name: subscriber-rs
+    app.kubernetes.io/part-of: techtalks
+    app.kubernetes.io/component: dapr
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: subscriber-rs
+      app.kubernetes.io/part-of: techtalks
+      app.kubernetes.io/component: dapr
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: subscriber-rs
+        app.kubernetes.io/part-of: techtalks
+        app.kubernetes.io/component: dapr
+      annotations:
+        dapr.io/enabled: "true"
+        dapr.io/app-id: "subscriber-rs"
+        dapr.io/app-port: "50051"
+        dapr.io/app-protocol: "grpc"
+    spec:
+      containers:
+        - name: subscriber-rs
+          image: localhost:32000/subscriber-rs:0.0.0
+          ports:
+            - containerPort: 50051
+              protocol: TCP
+          resources:
+            requests:
+              cpu: "10m"
+              memory: "25Mi"
+            limits:
+              cpu: "50m"
+              memory: "50Mi"
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
