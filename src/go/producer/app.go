@@ -59,13 +59,9 @@ func produceMessages(w http.ResponseWriter, r *http.Request) {
 
 		techTalk := TechTalk{Id: techTalkID[0], TechTalkName: techTalkName, CategoryId: techTalkCategory[0], LevelId: techTalkLevel[0]}
 
-		if err != nil {
-			http.Error(w, fmt.Sprintf("error serializing message: %v", err), http.StatusInternalServerError)
-		} else {
-			if err := client.PublishEvent(ctx, pubsubComponentName, pubsubTopic, techTalk); err != nil {
-				http.Error(w, fmt.Sprintf("error publishing message: %v", err), http.StatusInternalServerError)
-				return
-			}
+		if err := client.PublishEvent(ctx, pubsubComponentName, pubsubTopic, techTalk); err != nil {
+			http.Error(w, fmt.Sprintf("error publishing message: %v", err), http.StatusInternalServerError)
+			return
 		}
 	}
 
