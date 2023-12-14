@@ -12,9 +12,9 @@ docker images
 
 ```bash
 
-docker-compose -f docker-compose-dotnet-acr-include.yml build techtalks.producer
+docker compose -f docker-compose-dotnet-acr-include.yml build techtalks.producer
 
-docker-compose -f docker-compose-dotnet-acr-include.yml build 
+docker compose -f docker-compose-dotnet-acr-include.yml build 
 
 
 
@@ -24,7 +24,7 @@ docker-compose -f docker-compose-dotnet-acr-include.yml build
 
 ```bash 
 
-docker-compose -f docker-compose-dotnet-acr-include.yml up -d
+docker compose -f docker-compose-dotnet-acr-include.yml up -d
 
 ```
 

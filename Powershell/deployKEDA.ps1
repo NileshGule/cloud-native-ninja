@@ -7,7 +7,7 @@ Write-Host "Initializing KEDA on AKS cluster $clusterName" -ForegroundColor Gree
 #Helm 3 syntax
 helm upgrade --install keda `
     kedacore/keda `
-    --version 2.4.0 `
+    --version 2.12.1 `
     --create-namespace `
     --namespace keda
 
