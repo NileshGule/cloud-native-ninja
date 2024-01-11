@@ -26,13 +26,13 @@
 		<dependency>
 			<groupId>io.dapr</groupId>
 			<artifactId>dapr-sdk</artifactId>
-			<version>1.7.1</version>
+			<version>1.12.3</version>
 		</dependency>
 		<!-- Dapr's SDK integration with SpringBoot (optional). -->
 		<dependency>
 			<groupId>io.dapr</groupId>
 			<artifactId>dapr-sdk-springboot</artifactId>
-			<version>1.7.1</version>
+			<version>1.12.3</version>
 		</dependency>
 		<dependency>
 			<groupId>com.github.javafaker</groupId>
@@ -69,10 +69,10 @@
 						<image>eclipse-temurin@sha256:dde223014bd6917ea00d9eb370add424dc5dfcbcfcb8e8efac15a050563d312e</image>
 					</from>
 					<to>
-						<image>balchu/dapr-techtalks-producer</image>
+						<image>nileshgule/techtalksproducer:java</image>
 					</to>
 					<container>
-						<mainClass>ccom.nileshgule.techtalksproducer.TechTalksProducerApplication</mainClass>
+						<mainClass>com.nileshgule.techtalksproducer.TechTalksProducerApplication</mainClass>
 					</container>
 				</configuration>
 			</plugin>

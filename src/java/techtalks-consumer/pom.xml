@@ -58,10 +58,10 @@
 						<image>eclipse-temurin@sha256:dde223014bd6917ea00d9eb370add424dc5dfcbcfcb8e8efac15a050563d312e</image>
 					</from>
 					<to>
-						<image>balchu/dapr-techtalks-consumer</image>
+						<image>nileshgule/techtalksconsumer:java</image>
 					</to>
 					<container>
-						<mainClass>ccom.nileshgule.techtalksconsumer.TechTalksConsumerApplication</mainClass>
+						<mainClass>com.nileshgule.techtalksconsumer.TechTalksConsumerApplication</mainClass>
 					</container>
 				</configuration>
 			</plugin>

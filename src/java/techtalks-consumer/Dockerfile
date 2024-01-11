@@ -1,6 +1,6 @@
 # FROM eclipse-temurin:17-jdk-alpine AS build
-FROM arm64v8/eclipse-temurin AS build
-
+# FROM arm64v8/eclipse-temurin AS build
+FROM eclipse-temurin:17-jdk-jammy AS build
 
 # Set the working directory
 WORKDIR /app
@@ -14,11 +14,12 @@ COPY .mvn /app/.mvn
 COPY src /app/src
 
 # Build the application
-# RUN ./mvnw package -DskipTests
-RUN --mount=type=cache,id=maven,target=/root/.m2 ./mvnw package -DskipTests
+RUN ./mvnw package -DskipTests
+# RUN --mount=type=cache,id=maven,target=/root/.m2 ./mvnw package -DskipTests
 
 # Create the runtime image
-FROM eclipse-temurin:17-jre-alpine
+# FROM eclipse-temurin:17-jre-alpine
+FROM eclipse-temurin:17-jre-focal
 
 # Set the working directory
 WORKDIR /app
