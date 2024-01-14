@@ -1,4 +1,4 @@
-name: cloud-native-ninja-k8s-github-actions
+ultname: cloud-native-ninja-k8s-github-actions
 "on":
     push:
         branches:
@@ -62,4 +62,4 @@ jobs:
                 action: deploy
                 images: ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:"dotnet"
                 manifests: ${{ env.DEPLOYMENT_MANIFEST_PATH }}
-                namespace: namespace-workflow-1705220035178
+                namespace: default
