@@ -1,4 +1,4 @@
-ultname: cloud-native-ninja-k8s-github-actions
+name: cloud-native-ninja-k8s-github-actions
 "on":
     push:
         branches:
