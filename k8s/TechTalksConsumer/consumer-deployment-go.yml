@@ -3,7 +3,7 @@ kind: Deployment
 
 metadata:
   name: rabbitmq-consumer-deployment
-  namespace: techtalks-ns
+  
   labels:
     run: rabbitmq-consumer
     app: techtalks

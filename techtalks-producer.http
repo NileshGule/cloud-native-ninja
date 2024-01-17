@@ -7,9 +7,9 @@
 # http://20.212.95.39:8080/generate/10000
 
 
-# http://localhost:8080/generate/1000
+http://localhost:8080/api/TechTalks/produceMessages/?numberOfMessages=500
+# http://localhost:8081//
 
-
-http://4.144.184.74/producer/generate/1000
+# http://4.144.184.74/producer/generate/1000
 
 

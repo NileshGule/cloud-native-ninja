@@ -6,9 +6,15 @@ services:
     build:
       context: src/java/techtalks-producer
       dockerfile: Dockerfile
+      platforms:
+        - linux/amd64
+        - linux/arm64
 
   techtalks.consumer:
     image: nileshgule/techtalksconsumer:java
     build:
       context: src/java/techtalks-consumer
       dockerfile: Dockerfile
+      platforms:
+        - linux/amd64
+        - linux/arm64

@@ -14,8 +14,8 @@ COPY .mvn /app/.mvn
 COPY src /app/src
 
 # Build the application
-RUN ./mvnw package -DskipTests
-# RUN --mount=type=cache,id=maven,target=/root/.m2 ./mvnw package -DskipTests
+# RUN ./mvnw package -DskipTests
+RUN --mount=type=cache,id=maven,target=/root/.m2 ./mvnw package -DskipTests
 
 # Create the runtime image
 # FROM eclipse-temurin:17-jre-alpine
