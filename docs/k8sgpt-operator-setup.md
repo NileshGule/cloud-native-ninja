@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-- A Kubernetes cluster 
+- A Kubernetes cluster (obvious :))
 - Install Prometheus using Kube stack operator: Ensure that the `serviceMonitorSelectorNilUsesHelmValues` is set to `false` in the `values.yaml` file of the kube-prometheus-stack helm chart. This is required to enable the prometheus operator to discover the service monitors created by the k8sgpt operator. This can also be done by using the following command:
 ```
 helm upgrade --install prometheus \
@@ -20,11 +20,11 @@ prometheus-community/kube-prometheus-stack  \
 helm repo add k8sgpt https://charts.k8sgpt.ai/
 helm repo update
 
-helm upgrade --install k8sgpt `
-k8sgpt/k8sgpt-operator -n k8sgpt-operator-system `
---create-namespace `
---set serviceMonitor.enabled=true `
---set grafanaDashboard.enabled=true `
+helm upgrade --install k8sgpt \
+k8sgpt/k8sgpt-operator -n k8sgpt-operator-system \
+--create-namespace \
+--set serviceMonitor.enabled=true \
+--set grafanaDashboard.enabled=true \
 --wait
 
 ```
@@ -64,6 +64,13 @@ With all these steps completed, the k8sgpt operator should be up and running and
 
 ```
 
-kubectl get results 
+kubectl get results -n k8sgpt-operator-system | jq .
+
 
 ```
+
+## To Do
+
+### Add screenshot for Prometheus Targets
+
+### Add screenshot for Grafana Dashboard
