@@ -51,7 +51,8 @@ if ($aksCLusterExists -eq $false) {
         --output=jsonc `
         --kubernetes-version=$kubernetesVersion `
         --attach-acr=$acrRegistryName `
-        --enable-keda
+        --enable-keda `
+        --enable-addons azure-keyvault-secrets-provider
 
     #check the status of last command
     if (!$?) {
