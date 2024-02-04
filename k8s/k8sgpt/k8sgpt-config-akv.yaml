@@ -15,17 +15,17 @@ spec:
       key: AzureOpenAIAPIKey
     # anonymized: false
     # language: english
-    volumeMounts:
-      - name: azure-kvname-user-msi
-        mountPath: /mnt/secrets-store
-        readOnly: true
-  volumes:
-    - name: azure-kvname-user-msi
-      csi:
-        driver: secrets-store.csi.k8s.io
-        readOnly: true
-        volumeAttributes:
-          secretProviderClass: azure-kvname-user-msi
+  #   volumeMounts:
+  #     - name: azure-kvname-user-msi
+  #       mountPath: /mnt/secrets-store
+  #       readOnly: true
+  # volumes:
+  #   - name: azure-kvname-user-msi
+  #     csi:
+  #       driver: secrets-store.csi.k8s.io
+  #       readOnly: true
+  #       volumeAttributes:
+  #         secretProviderClass: azure-kvname-user-msi
   noCache: false
   repository: ghcr.io/k8sgpt-ai/k8sgpt
   version: v0.3.26

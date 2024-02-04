@@ -24,16 +24,27 @@ az aks create \
 
 kubectl get pods \
 --namespace kube-system \
---label 'app in (secrets-store-csi-driver,secrets-store-provider-azure)'
+--selector 'app in (secrets-store-csi-driver,secrets-store-provider-azure)'
 
 ```
 
-### Update existing Azure Key Vault to enable RBAC authorization
+### View details of Azure Kubernetes Service (AKS) cluster
 
 ```bash
 
-az keyvault update \
---name ngAkv \
+az aks show \
+--resource-group demo-azure-singapore-rg \
+--name azure-singapore-cluster \
+--output jsonc
+
+```
+
+### Create Azure Key Vault and enable RBAC authorization
+
+```bash
+
+az keyvault create \
+--name demo-akv-ng \
 --resource-group demo-azure-singapore-rg \
 --location southeastasia \
 --enable-rbac-authorization
@@ -44,7 +55,10 @@ az keyvault update \
 
 ```bash
 
-az keyvault secret set --vault-name ngAkv --name AzureOpenAIAPIKey --value $AZURE_OPENAI_TOKEN
+az keyvault secret set \
+--vault-name demo-akv-ng \
+--name AzureOpenAIAPIKey \
+--value $AZURE_OPENAI_TOKEN
 
 ```
 
@@ -55,8 +69,8 @@ az keyvault secret set --vault-name ngAkv --name AzureOpenAIAPIKey --value $AZUR
 ```bash
 
 az aks show \
---resorce-group-name demo-azure-singapore-rg \
---name myAKSCluster \
+--resource-group demo-azure-singapore-rg \
+--name azure-singapore-cluster \
 --query addonProfiles.azureKeyvaultSecretsProvider.identity.objectId \
 --output tsv
 
@@ -66,17 +80,18 @@ az aks show \
 
 ```bash
 
-export IDENTITY_OBJECT_ID="$(az identity show -g demo-azure-singapore-rg --name <identity-name> --query 'principalId' -o tsv)"
+export IDENTITY_OBJECT_ID="$(az identity show -g MC_demo-azure-singapore-rg_azure-singapore-cluster_southeastasia --name azurekeyvaultsecretsprovider-azure-singapore-cluster --query 'clientId' -o tsv)"
 
-export KEYVAULT_SCOPE=$(az keyvault show --name ngAkv --query id -o tsv)
+export KEYVAULT_SCOPE=$(az keyvault show --name demo-akv-ng --query id -o tsv)
 
 az role assignment create \
 --role "Key Vault Administrator" \
 --assignee $IDENTITY_OBJECT_ID \
 --scope $KEYVAULT_SCOPE
 
+
 # get tenant id for azure subscription
-export TENANTID =$(az account show --query tenantId -o tsv)
+export TENANTID=$(az account show --query tenantId -o tsv)
 
 ```
 
@@ -94,13 +109,13 @@ spec:
   parameters:
     usePodIdentity: "false"
     useVMManagedIdentity: "true"          # Set to true for using managed identity
-    userAssignedIdentityID: $IDENTITY_OBJECT_ID   # Set the clientID of the user-assigned managed identity to use
+    userAssignedIdentityID: $CLIENT_ID   # Set the clientID of the user-assigned managed identity to use
     keyvaultName: ngAkv        # Set to the name of your key vault
     
     objects:  |
       array:
         - |
-          objectName: AzureOpenAIAPIKey
+          objectName: AzureOpenAIAPI
           objectType: secret              # object types: secret, key, or cert
     tenantId: $TENANTID                 # The tenant ID of the key vault
 
@@ -116,4 +131,9 @@ spec:
 
     ### Use the secret
 
-    
+    ```bash
+
+    kubectl apply -f k8s/akv-integration/test-pod.yaml
+
+    ```
+
