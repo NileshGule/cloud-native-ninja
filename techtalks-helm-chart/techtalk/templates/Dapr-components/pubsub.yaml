@@ -1,0 +1,30 @@
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: rabbitmq-pubsub
+spec:
+  type: pubsub.rabbitmq
+  version: v1
+  metadata:
+  - name: connectionString
+    secretKeyRef:
+      name: rabbitmq-secret
+      key: host
+  # - name: connectionString
+  #   # value: "amqp://<<user name>>:<<password>>@<<host>>:5672/"
+  
+  - name: durable
+    value: true
+  - name: deletedWhenUnused
+    value: false
+  - name: autoAck
+    value: false
+  - name: prefetchCount
+    value: 50
+  - name: reconnectWait
+    value: 0
+  - name: concurrencyMode
+    value: single  
+  - name: exchangeKind
+    value: fanout
+  

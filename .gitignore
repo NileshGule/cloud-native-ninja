@@ -379,6 +379,7 @@ build/
 
 ### Helm ###
 helm/*.tgz
+techtalks-helm-chart/*.tgz
 
 ### Gradle ###
 .gradle

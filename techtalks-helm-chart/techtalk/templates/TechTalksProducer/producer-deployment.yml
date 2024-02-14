@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: rabbitmq-producer-deployment
+  labels:
+    {{- include "techtalks.producerLabels" . | nindent 4 }}
+
+spec:
+  replicas: {{ .Values.techTalksProducer.replicas}}
+  selector:
+    matchLabels:
+      {{- include "techtalks.producerLabels" . | nindent 6 }}
+
+  template:
+    metadata:
+      labels:
+        {{- include "techtalks.producerLabels" . | nindent 8 }}
+      annotations:
+        dapr.io/enabled: "true"
+        dapr.io/app-id: "rabbitmq-producer"
+        dapr.io/app-port: "{{ .Values.techTalksProducer.containerPort}}"
+        # dapr.io/config: "zipkin"
+    spec:
+      containers:
+        - name: techtalksproducer
+          # image: ngacrregistry.azurecr.io/techtalksproducer:dotnet
+          # image: ngacrregistry.azurecr.io/techtalksproducer:go
+          # image: ngacrregistry.azurecr.io/techtalksproducer:java
+          # image: nileshgule/techtalksproducer:dotnet
+          # image: nileshgule/techtalksproducer:java
+          image: {{ .Values.techTalksProducer.image.repository}}:{{ .Values.techTalksProducer.image.tag}}
+          
+          # env:
+          #   - name: ASPNETCORE_ENVIRONMENT
+          #     value: Development
+          ports:
+            - containerPort: {{ .Values.techTalksProducer.containerPort}}
+              # protocol: TCP
+          resources:
+            requests:
+              cpu: "10m" #1% of a core
+              memory: "200Mi"
+            limits:
+              cpu: "50m" #5% of a core
+              memory: "500Mi"
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst

@@ -1,0 +1,28 @@
+# Default values for techtalk.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+techTalksProducer:
+  replicas: 3
+  image:
+    repository: nileshgule/techtalksproducer
+    tag: go
+  containerPort: 8080
+  labels:
+    run: rabbitmq-producer
+    app: techtalks
+  service:
+    type: ClusterIP
+    port: 8080
+    targetPort: 8080
+
+techTalksConsumer:
+  labels:
+    run: rabbitmq-consumer
+    app: techtalks
+  image:
+    repository: "nileshgule/techtalksconsumer"
+    tag: go
+  containerPort: 8081
