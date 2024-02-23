@@ -7,9 +7,9 @@ metadata:
     backstage.io/kubernetes-id: techtalks-producer-api
   tags:
     - go
-    - Java
-    - KEDA
-    - Dapr
+    - java
+    - keda
+    - dapr
   links:
     - url: https://admin.example-org.com
       title: Admin Dashboard
