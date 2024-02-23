@@ -13,6 +13,7 @@ techTalksProducer:
   labels:
     run: rabbitmq-producer
     app: techtalks
+    backstage.io/kubernetes-id: techtalks-producer-api
   service:
     type: ClusterIP
     port: 8080

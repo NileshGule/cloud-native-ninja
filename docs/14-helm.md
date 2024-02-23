@@ -2,7 +2,7 @@
 
 ```bash
 
-helm package tecktalks
+helm package techtalks
 
 helm install --dry-run --debug techtalks ./tecktalks-0.1.0.tgz
 
