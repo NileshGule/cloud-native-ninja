@@ -36,9 +36,9 @@ jobs:
               env:
                 IMAGE_TAG: ${{ github.sha }}
             - name: Push the Docker image
-                run: docker compose -f ./docker-compose-go-acr-ci.yml push
-                env:
-                    IMAGE_TAG: ${{ github.sha }}
+              run: docker compose -f ./docker-compose-go-acr-ci.yml push
+              env:
+                IMAGE_TAG: ${{ github.sha }}
     deploy:
         permissions:
             actions: read
