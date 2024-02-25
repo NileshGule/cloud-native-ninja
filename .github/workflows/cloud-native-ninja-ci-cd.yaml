@@ -27,8 +27,18 @@ jobs:
                 client-id: ${{ secrets.AZURE_CLIENT_ID }}
                 subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
                 tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-            - name: Build and push image to ACR
-              run: az acr build --image ${{ env.CONTAINER_NAME }}:${{ github.sha }} --registry ${{ env.AZURE_CONTAINER_REGISTRY }} -g ${{ env.ACR_RESOURCE_GROUP }} -f ./docker-compose-go-acr-ci.yml ./
+            # - name: Build and push image to ACR
+            #   run: az acr build --image ${{ env.CONTAINER_NAME }}:${{ github.sha }} --registry ${{ env.AZURE_CONTAINER_REGISTRY }} -g ${{ env.ACR_RESOURCE_GROUP }} -f ./docker-compose-go-acr.yml ./
+            - name: Login to ACR
+              run: az acr login --name ${{ env.AZURE_CONTAINER_REGISTRY }} 
+            - name: Build the Docker image
+              run: docker compose -f ./docker-compose-go-acr-ci.yml build 
+              env:
+                IMAGE_TAG: ${{ github.sha }}
+            - name: Push the Docker image
+              run: docker compose -f ./docker-compose-go-acr-ci.yml push
+              env:
+                IMAGE_TAG: ${{ github.sha }}
     deploy:
         permissions:
             actions: read
