@@ -1,4 +1,19 @@
 version: 2
+
+updates:
+  - package-ecosystem: "nuget" # See documentation for possible values
+    directory: "/" # Location of package manifests
+    schedule:
+      interval: "daily"
+    # Allow up to 10 open pull requests for nuget dependencies
+    open-pull-requests-limit: 10
+  - package-ecosystem: "maven" # See documentation for possible values
+    directory: "/" # Location of package manifests
+    schedule:
+      interval: "daily"
+    # Allow up to 10 open pull requests for nuget dependencies
+    open-pull-requests-limit: 10
+
 trigger: none # Disable CI trigger
 
 schedules:
@@ -14,4 +29,4 @@ pool:
   vmImage: 'ubuntu-latest' # requires macos or ubuntu (windows is not supported)
 
 steps:
-- task: tingle-software.dependabot.dependabot.dependabot@1
+- task: dependabot@1
