@@ -1,3 +1,4 @@
+version: 2
 trigger: none # Disable CI trigger
 
 schedules:
@@ -13,4 +14,4 @@ pool:
   vmImage: 'ubuntu-latest' # requires macos or ubuntu (windows is not supported)
 
 steps:
-- task: dependabot@1
+- task: tingle-software.dependabot.dependabot.dependabot@1
