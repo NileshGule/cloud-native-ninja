@@ -1,0 +1,16 @@
+trigger: none # Disable CI trigger
+
+schedules:
+- cron: '0 2 * * *' # daily at 2am UTC
+  always: true # run even when there are no code changes
+  branches:
+    include:
+      - master
+  batch: true
+  displayName: Daily
+
+pool:
+  vmImage: 'ubuntu-latest' # requires macos or ubuntu (windows is not supported)
+
+steps:
+- task: dependabot@1
