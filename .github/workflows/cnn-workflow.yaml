@@ -32,7 +32,7 @@ jobs:
             - name: Login to ACR
               run: az acr login --name ${{ env.AZURE_CONTAINER_REGISTRY }} 
             - name: Build the Docker image
-              run: docker compose build -f ./docker-compose-go-acr.yml ./
+              run: docker compose -f ./docker-compose-go-acr.yml build 
     deploy:
         permissions:
             actions: read
