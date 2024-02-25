@@ -8,7 +8,7 @@ env:
     ACR_RESOURCE_GROUP: acrResourceGroup
     AZURE_CONTAINER_REGISTRY: ngAcrRegistry
     CHART_OVERRIDE_PATH: ./techtalks-helm-chart/techtalk/values.yaml
-    CHART_OVERRIDES: image.repository=ngAcrRegistry.azurecr.io/techtalksproducer,image.tag=${{ github.sha }}
+    CHART_OVERRIDES: techTalksProducer.image.repository=ngacrregistry.azurecr.io/techtalksproducer,techTalksProducer.image.tag=${{ github.sha }},techTalksConsumer.image.repository=ngacrregistry.azurecr.io/techtalkconsumer,techTalksConsumer.image.tag=${{ github.sha }}
     CHART_PATH: ./techtalks-helm-chart/techtalk
     CLUSTER_NAME: azure-singapore-cluster
     CLUSTER_RESOURCE_GROUP: demo-azure-singapore-rg
