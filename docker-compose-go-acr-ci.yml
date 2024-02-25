@@ -2,13 +2,13 @@ version: "3"
 
 services:
   techtalks.producer:
-    image: ngacrregistry.azurecr.io/techtalksproducer:${github.sha}
+    image: ngacrregistry.azurecr.io/techtalksproducer:${IMAGE_TAG}
     build:
       context: src/go/producer
       dockerfile: Dockerfile
 
   techtalks.consumer:
-    image: ngacrregistry.azurecr.io/techtalksconsumer:${github.sha}
+    image: ngacrregistry.azurecr.io/techtalksconsumer:${IMAGE_TAG}
     build:
       context: src/go/consumer
       dockerfile: Dockerfile
