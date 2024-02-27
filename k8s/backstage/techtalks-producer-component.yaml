@@ -8,6 +8,7 @@ metadata:
     sonarqube.org/project-key: nileshgule-github/techtalks-producer
   tags:
     - go
+    - java
   links:
     - url: https://admin.example-org.com
       title: Admin Dashboard
