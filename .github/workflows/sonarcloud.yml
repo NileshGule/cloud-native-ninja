@@ -64,8 +64,8 @@ jobs:
             -X 
             -Dsonar.projectKey=NileshGule_cloud-native-ninja
             -Dsonar.organization=nileshgule-github            
-            -Dsonar.sources=src/
-            -Dsonar.projectBaseDir=src/ 
+            # -Dsonar.sources=src/
+            # -Dsonar.projectBaseDir=src/ 
             # optional, default is project base directory            
             # optional, default is .
             # When you need the analysis to take place in a directory other than the one from which it was launched
