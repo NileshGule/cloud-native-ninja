@@ -43,6 +43,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Set up Java
+        uses: actions/setup-java@v2
+        with:
+          java-version: '17'
       - name: Analyze with SonarCloud
 
         # You can pin the exact commit or the version.
