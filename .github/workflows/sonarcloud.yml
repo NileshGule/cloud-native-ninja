@@ -47,6 +47,7 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: '17'
+          distribution: 'adopt'
       - name: Analyze with SonarCloud
 
         # You can pin the exact commit or the version.
@@ -64,9 +65,9 @@ jobs:
             -Dsonar.projectKey=NileshGule_cloud-native-ninja
             -Dsonar.organization=nileshgule-github
             # Comma-separated paths to directories containing main source files.
-            #-Dsonar.sources= # optional, default is project base directory
+            -Dsonar.sources=src # optional, default is project base directory
             # When you need the analysis to take place in a directory other than the one from which it was launched
-            #-Dsonar.projectBaseDir= # optional, default is .
+            -Dsonar.projectBaseDir=src # optional, default is .
             # Comma-separated paths to directories containing test source files.
             #-Dsonar.tests= # optional. For more info about Code Coverage, please refer to https://docs.sonarcloud.io/enriching/test-coverage/overview/
             # Adds more detail to both client and server-side analysis logs, activating DEBUG mode for the scanner, and adding client-side environment variables and system properties to the server-side log of analysis report processing.
