@@ -5,7 +5,7 @@ metadata:
   description: Tech Talks Producer api
   annotations:
     backstage.io/kubernetes-id: techtalks-producer-api
-    sonarqube.org/project-key: NileshGule_cloud-native-ninja
+    sonarqube.org/project-key: nileshgule-github/NileshGule_cloud-native-ninja
   tags:
     - go
   links:
