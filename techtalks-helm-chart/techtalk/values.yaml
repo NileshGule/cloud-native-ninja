@@ -23,6 +23,7 @@ techTalksConsumer:
   labels:
     run: rabbitmq-consumer
     app: techtalks
+    backstage.io/kubernetes-id: techtalks-consumer-api
   image:
     repository: "nileshgule/techtalksconsumer"
     tag: go

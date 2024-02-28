@@ -1,11 +1,11 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: techtalks-producer-api
-  description: Tech Talks Producer api
+  name: techtalks-consumer-api
+  description: Tech Talks Consumer api
   annotations:
-    backstage.io/kubernetes-id: techtalks-producer-api
-    sonarqube.org/project-key: techtalks-producer
+    backstage.io/kubernetes-id: techtalks-consumer-api
+    # sonarqube.org/project-key: techtalks-consumer
   tags:
     - go
     - java

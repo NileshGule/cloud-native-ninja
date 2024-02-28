@@ -34,10 +34,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn -f /home/runner/work/cloud-native-ninja/cloud-native-ninja/src/java/techtalks-producer/ -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=NileshGule_cloud-native-ninja
+        run: mvn -f /home/runner/work/cloud-native-ninja/cloud-native-ninja/src/java/techtalks-producer/ -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=techtalks-producer
 
       # - name: Build and analyze TechTalks Consumer
       #   env:
       #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
       #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      #   run: mvn -f /home/runner/work/cloud-native-ninja/cloud-native-ninja/src/java/techtalks-consumer/ -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=NileshGule_cloud-native-ninja
+      #   run: mvn -f /home/runner/work/cloud-native-ninja/cloud-native-ninja/src/java/techtalks-consumer/ -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=techtalks-consumer
