@@ -28,7 +28,7 @@ func produceMessages(w http.ResponseWriter, r *http.Request) {
 
 	vars := mux.Vars(r)
 	talks := vars["num"]
-	log.Println("Number of talks: ", talks)
+	log.Println("Number of talks to produce: ", talks)
 
 	// numberOfTalks, err := strconv.Atoi(vars["num"])
 	numberOfTalks, err := strconv.Atoi(talks)
