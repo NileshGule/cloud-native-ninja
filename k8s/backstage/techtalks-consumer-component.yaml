@@ -9,6 +9,8 @@ metadata:
   tags:
     - go
     - java
+    - dotnet
+    - rust
   links:
     - url: https://admin.example-org.com
       title: Admin Dashboard
