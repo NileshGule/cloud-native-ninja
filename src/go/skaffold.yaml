@@ -1,0 +1,57 @@
+apiVersion: skaffold/v4beta2
+kind: Config
+metadata:
+  name: techtalks-go
+build:
+  artifacts:
+    - image: localhost:32000/techtalksproducer-go
+      context: producer/
+      ko:
+        fromImage: gcr.io/distroless/base:debug-nonroot
+        env:
+        - CGO_ENABLED=0
+    - image: localhost:32000/techtalksconsumer-go
+      context: consumer/
+      ko:
+        fromImage: gcr.io/distroless/base:debug-nonroot
+        env:
+        - CGO_ENABLED=0
+profiles:
+  - name: acr
+    build:
+      tagPolicy:
+        envTemplate:
+          template: "{{.RELEASE}}"
+      platforms: ["linux/amd64", "linux/arm64"]
+      artifacts:
+      - image: ngacrregistry.azurecr.io/techtalksproducer-go
+        context: producer/
+        ko:
+          fromImage: gcr.io/distroless/base:nonroot
+          env:
+          - CGO_ENABLED=0
+      - image: ngacrregistry.azurecr.io/techtalksconsumer-go
+        context: consumer/
+        ko:
+          fromImage: gcr.io/distroless/base:nonroot
+          env:
+          - CGO_ENABLED=0
+  - name: dockerhub
+    build:
+      tagPolicy:
+        envTemplate:
+          template: "{{.RELEASE}}"
+      platforms: ["linux/amd64", "linux/arm64"]
+      artifacts:
+      - image: balchu/techtalksproducer-go
+        context: producer/
+        ko:
+          fromImage: gcr.io/distroless/base:nonroot
+          env:
+          - CGO_ENABLED=0
+      - image: balchu/techtalksconsumer-go
+        context: consumer/
+        ko:
+          fromImage: gcr.io/distroless/base:nonroot
+          env:
+          - CGO_ENABLED=0          
