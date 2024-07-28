@@ -1,8 +1,8 @@
 Param(
     [parameter(Mandatory = $false)]
-    [string]$resourceGroupName = "demo-azure-singapore-rg",
+    [string]$resourceGroupName = "demo-azure-melbourne-rg",
     [parameter(Mandatory = $false)]
-    [string]$clusterName = "azure-singapore-cluster"
+    [string]$clusterName = "azure-melbourne-cluster"
 )
 
 # Add dapr extension to AKS cluster

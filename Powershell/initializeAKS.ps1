@@ -2,15 +2,15 @@ Param(
     [parameter(Mandatory = $false)]
     [string]$subscriptionName = "Microsoft Azure Sponsorship",
     [parameter(Mandatory = $false)]
-    [string]$resourceGroupName = "demo-azure-singapore-rg",
+    [string]$resourceGroupName = "demo-azure-melbourne-rg",
     [parameter(Mandatory = $false)]
-    [string]$resourceGroupLocaltion = "South East Asia",
+    [string]$resourceGroupLocaltion = "australiasoutheast",
     [parameter(Mandatory = $false)]
-    [string]$clusterName = "azure-singapore-cluster",
+    [string]$clusterName = "azure-melbourne-cluster",
     [parameter(Mandatory = $false)]
     [int16]$workerNodeCount = 3,
     [parameter(Mandatory = $false)]
-    [string]$kubernetesVersion = "1.28.3",
+    [string]$kubernetesVersion = "1.29.5",
     [parameter(Mandatory = $false)]
     [string]$acrRegistryName = "ngAcrRegistry"
 )
@@ -48,6 +48,7 @@ if ($aksCLusterExists -eq $false) {
         --name=$clusterName `
         --node-count=$workerNodeCount `
         --enable-managed-identity `
+        --generate-ssh-keys `
         --output=jsonc `
         --kubernetes-version=$kubernetesVersion `
         --attach-acr=$acrRegistryName `
