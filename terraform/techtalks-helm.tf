@@ -5,5 +5,5 @@ resource "helm_release" "techtalks" {
   chart            = "techtalk"
   version          = "0.1.0"
 
-  depends_on = [ helm_release.rabbitmq, helm_release.keda ]
+  depends_on = [ azurerm_kubernetes_cluster.this, helm_release.rabbitmq, helm_release.keda ]
 }

@@ -24,7 +24,7 @@ resource "helm_release" "keda" {
   create_namespace = true
   version          = "2.12.1"
 
-  depends_on = [ helm_release.rabbitmq ]
+  depends_on = [ azurerm_kubernetes_cluster.this, helm_release.rabbitmq ]
  
 }
 
