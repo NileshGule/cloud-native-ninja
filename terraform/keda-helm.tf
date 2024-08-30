@@ -15,46 +15,18 @@ provider "helm" {
   }
 }
 
-resource "helm_release" "external_keda" {
-  name = "external"
+resource "helm_release" "keda" {
+  name = "keda"
 
   repository       = "https://kedacore.github.io/charts"
   chart            = "keda"
   namespace        = "keda"
   create_namespace = true
   version          = "2.12.1"
+
+  depends_on = [ helm_release.rabbitmq ]
  
 }
 
-resource "helm_release" "rabbitmq" {
-  name = "rabbitmq"
 
-  repository       = "https://charts.bitnami.com/bitnami"
-  chart            = "rabbitmq"
-  version          = "10.2.1"
 
-  set {
-    name  = "auth.username"
-    value = "user"
-  }
-
-  set {
-    name  = "auth.password"
-    value = "PASSWORD"
-  }
-
-  set {
-    name  = "auth.erlangCookie"
-    value = "c2VjcmV0Y29va2ll"
-  }
- 
-}
-
-resource "helm_release" "techtalks" {
-  name = "techtalks"
-
-  repository       = "../techtalks-helm-chart"
-  chart            = "techtalk"
-  version          = "0.1.0"
- 
-}
