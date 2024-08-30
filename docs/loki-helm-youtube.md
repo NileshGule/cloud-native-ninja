@@ -2,7 +2,7 @@
 
 ## Add Grafana helm repo
 
-```code
+```bash
 
 helm repo add grafana https://grafana.github.io/helm-charts
 
@@ -10,7 +10,9 @@ helm repo add grafana https://grafana.github.io/helm-charts
 
 ## 
 
-Pre-requisite is to have the kube prometheus stack installed on the Kubernetes cluster. Loki will use Grafana as the visualization tool. 
+Pre-requisite is to have the kube prometheus stack installed on the Kubernetes cluster. If Prometheus is not installed on the cluster, refer to this [YouTube video](https://youtu.be/Nng7z7xGh7g) to set it up using Helm.
+
+Loki will use Grafana as the visualization tool. 
 While installing Loki we need to set the default parameter as flase as Prometheus is already set as the default data source.
 
 ```bash
