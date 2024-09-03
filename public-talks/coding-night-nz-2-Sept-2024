@@ -1,0 +1,43 @@
+# Commands used during Coding night NZ demo
+
+# Scale deployment for rabbitmq-producer
+
+```bash
+
+kubectl scale deploy rabbitmq-producer-deployment --replicas=2
+
+```
+
+# Scale deployment for rabbitmq-consumer
+
+```bash
+
+kubectl scale deploy rabbitmq-consumer-deployment --replicas=1
+
+```
+
+# Disable KEDA autoscaler
+
+```
+
+kubectl delete scaledobject rabbitmq-consumer-scaled-object
+
+```
+
+# Enable KEDA autoscaler
+
+```
+
+pwsh deployAutoScaler.ps1 
+
+```
+
+# KEDA CRDs and objects
+
+```
+
+kubectl get all -n keda
+
+kubectl get crd
+
+```

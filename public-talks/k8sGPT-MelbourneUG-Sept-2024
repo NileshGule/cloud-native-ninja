@@ -1,0 +1,19 @@
+# Commands related to k8sUG Melbourne 
+
+# Add k8sGPT backend
+
+```bash
+
+k8sgpt auth add \
+--backend azureopenai \
+--baseurl https://k8sgpt-australia-azure-openai.openai.azure.com/ \
+--engine k8sgpt35turbo \
+--model gpt-35-turbo
+
+```
+
+k8sgpt auth default --provider azureopenai
+
+k8sgpt auth -h
+
+k8sgpt auth list
