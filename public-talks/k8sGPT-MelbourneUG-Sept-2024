@@ -7,7 +7,7 @@
 k8sgpt auth add \
 --backend azureopenai \
 --baseurl https://k8sgpt-australia-azure-openai.openai.azure.com/ \
---engine k8sgpt35turbo \
+--engine k8sgptauazureopenai \
 --model gpt-35-turbo
 
 ```
@@ -17,3 +17,50 @@ k8sgpt auth default --provider azureopenai
 k8sgpt auth -h
 
 k8sgpt auth list
+
+```powershell
+
+k8sgpt auth add `
+--backend azureopenai `
+--baseurl https://k8sgpt-australia-azure-openai.openai.azure.com/ `
+--engine k8sgptauazureopenai `
+--model gpt-35-turbo `
+--password <<Your_API_KEY_HERE>>
+
+```
+
+k8sgpt auth remove --backends azureopenai
+
+k8sgpt auth default --provider azureopenai
+
+k8sgpt analyze
+
+k8sgpt analyze --explain
+
+k8sgpt analyze --explain --language French
+
+k8sgpt analyze --explain --language Chinese
+
+k8sgpt analyze --explain --language Spanish
+
+k8sgpt analyze --explain --language Japansese
+
+k8sgpt analyze --explain --language Korean
+
+k8sgpt analyze --explain --interactive
+
+k8sgpt integration list
+
+k8sgpt integration activate trivy
+
+k8sgpt integration deactivate trivy
+
+k8sgpt filters list
+
+k8sgpt analyze --filter VulnerabilityReport
+
+k8sgpt analyze --explain --filter VulnerabilityReport
+
+
+
+

@@ -1,0 +1,25 @@
+# K8sUG 14 September 2023
+
+## scale rabbitmq-producer-deployment 
+
+```powershell
+
+kubectl scale deployment rabbitmq-producer-deployment --replicas=5
+
+```
+
+## KEDA CRD
+
+```powershell
+
+kubectl get crd 
+
+```
+
+## Update batch size for live demo
+
+```powershell
+
+k apply -f .\pubsub.yaml
+
+```
