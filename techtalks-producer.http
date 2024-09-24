@@ -2,7 +2,7 @@
 
 # http://20.197.107.149/generate/?numberOfTalks=5000
 
-http://localhost:8080/generate/5000
+http://localhost:8080/generate/10000
 
 # second request
 

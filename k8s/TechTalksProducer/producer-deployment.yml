@@ -31,7 +31,7 @@ spec:
           # image: ngacrregistry.azurecr.io/techtalksproducer:java
           # image: nileshgule/techtalksproducer:dotnet
           # image: nileshgule/techtalksproducer:java
-          image: nileshgule/techtalksproducer:go_1
+          image: nileshgule/techtalksproducer:go
           
           # env:
           #   - name: ASPNETCORE_ENVIRONMENT
