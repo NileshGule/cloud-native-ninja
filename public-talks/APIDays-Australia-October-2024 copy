@@ -70,12 +70,6 @@ k8sgpt integration deactivate trivy
 
 k8sgpt filters list
 
-k8sgpt analyze --filter VulnerabilityReport
-
-k8sgpt analyze --explain --filter VulnerabilityReport
-
-
-
 k8sgpt analyse --explain --filter VulnerabilityReport
 
 k8sgpt analyse --explain --filter ConfigAuditReport
