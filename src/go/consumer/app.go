@@ -45,21 +45,22 @@ func eventHandler(ctx context.Context, e *common.TopicEvent) (retry bool, err er
 
 	var techTalk TechTalk
 
-	fmt.Println("Subscriber received:", e.Data)
+	log.Println("Subscriber received:", e.Data)
 
 	jsonData := e.Data.(map[string]interface{})
 	fmt.Println("jsonData: ", jsonData)
 
 	if data, err := json.Marshal(jsonData); err == nil {
 		json.Unmarshal(data, &techTalk)
+		fmt.Println("TechTalk Id: ", techTalk.Id)
+		fmt.Println("TechTalk name: ", techTalk.TechTalkName)
+		fmt.Println("TechTalk Category : ", techTalk.CategoryId)
+		fmt.Println("TechTalk Level: ", techTalk.LevelId)
+
+		return false, nil
 	}
+	return true, err
 
-	fmt.Println("TechTalk Id: ", techTalk.Id)
-	fmt.Println("TechTalk name: ", techTalk.TechTalkName)
-	fmt.Println("TechTalk Category : ", techTalk.CategoryId)
-	fmt.Println("TechTalk Level: ", techTalk.LevelId)
-
-	return false, nil
 }
 
 type TechTalk struct {
