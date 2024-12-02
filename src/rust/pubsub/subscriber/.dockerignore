@@ -1,0 +1,3 @@
+target/**
+k8s/**
+.vscode/**
